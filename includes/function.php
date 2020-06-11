@@ -316,6 +316,11 @@ if(isset($user)&& isset($pass))
 														$_SESSION['login_user_verified']=$usr_details['Username'];
 															
 														echo("<script>location.href = 'users/index.php';</script>");
+														break;
+											case 3:
+										
+														$_SESSION['login_user_verified']=$usr_details['Username'];
+														echo("<script>location.href = 'staff/index.php';</script>");
 														break;	
 														default:
 														echo"Invalid Prviledge!";														
