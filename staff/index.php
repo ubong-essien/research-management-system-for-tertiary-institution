@@ -27,7 +27,7 @@ include('../includes/admin_header.php');
                     <div class="box" style="border-radius:10px;background-color:#ffffff">
                         <div class="row">
                             <div class="col-md-4 col-xs-12">
-                                <table class="table table-bordered table-hover">
+                               <!--  <table class="table table-bordered table-hover">
                                 <tr>
                                 <td>Name: </td>
                                 <td>Ubong Essien</td>
@@ -40,8 +40,17 @@ include('../includes/admin_header.php');
                                 <td>Email: </td>
                                 <td>email@e-mail.com:</td>
                                 </tr>
-                               
-                                </table>
+                                <tr>
+                                <td>Email: </td>
+                                <td>email@e-mail.com:</td>
+                                </tr>
+                                </table> -->
+                                <div class="box pix" style="background-color:#004040;height:100%">
+                                    <div class="pix-details" style="background-color:#c0c0c0;display:none;opacity:0;position:relative;height:100%">
+                                    hvjhk
+
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-8 col-xs-12">
                             <p class="alert alert-primary">This shows a breakdown of research works by you</p>
@@ -67,7 +76,7 @@ include('../includes/admin_header.php');
                                     </div>
                                     <div class="col-md-3 col-sm-6 ">
                                         <div class="box" style="border-radius:10px;background-color:#c0c0c0;height:;">
-                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:black;display:block;text-decoration:none">Seninar</a></strong> </h4>
+                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:black;display:block;text-decoration:none">Seminar paper</a></strong> </h4>
                                     
                                         </div>
                                     </div>

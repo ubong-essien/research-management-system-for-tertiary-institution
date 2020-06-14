@@ -33,6 +33,7 @@ include('function.php');
     <link rel="stylesheet" href="<?php echo home_base_url();?>assets/css/datatables.min.css" />
     <!-- Custom styles for this template -->
     <link href="<?php echo home_base_url();?>css/landing-page.min.css" rel="stylesheet">
+    <link href="<?php echo home_base_url();?>css/added.css" rel="stylesheet">
     <style type="text/css">
 	@keyframes bounce {
 	0%, 20%, 60%, 100% {

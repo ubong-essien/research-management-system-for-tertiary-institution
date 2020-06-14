@@ -1,0 +1,5 @@
+.pix:hover .pix-details {
+    display:block;
+    opacity:1;
+    cursor:pointer;
+}
