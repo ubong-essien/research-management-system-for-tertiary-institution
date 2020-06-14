@@ -11,17 +11,18 @@ include('../includes/admin_header.php');
 			while($row=mysqli_fetch_assoc($r)):
 			?>
                 <div class="col-md-3 col-sm-6 item">
-                        <div class="box" style="border-radius:10px;background-color:#ffffff;height:65%;">
-                            <i style="color:orange;" class="fa fa-<?php echo $row['Icon']?> fa-3x"></i>
-                            <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:black;display:block;text-decoration:none"><?= $row['Link_Name']?></a></strong> </h4>
+                        <div class="box" style="border-radius:10px;background-color:#ffffff;height:70%;">
+                            <i style="color:#006600;" class="fa fa-<?php echo $row['Icon']?> fa-3x"></i>
+                            <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:black;display:block;text-decoration:none;font-family:arial narrow"><?= $row['Link_Name']?></a></strong> </h4>
                         </div>
                 </div>
                 <?php
 				endwhile;
 				?>
-                
+              
             </div>
-		<div class="row features" style="margin-top:-50px;">
+            
+		<div class="row features" style="margin-top:-60px;">
 	
                 <div class="col-md-12 col-sm-12 item">
                     <div class="box" style="border-radius:10px;background-color:#ffffff">
@@ -45,9 +46,23 @@ include('../includes/admin_header.php');
                                 <td>email@e-mail.com:</td>
                                 </tr>
                                 </table> -->
-                                <div class="box pix" style="background-color:#004040;height:100%">
-                                    <div class="pix-details" style="background-color:#c0c0c0;display:none;opacity:0;position:relative;height:100%">
-                                    hvjhk
+                                <div class=" pix" style="background-color:#ffffff;height:100%;cursor:pointer;position:relative;">
+                                    <img src="<?= home_base_url()?>img/testimonials-1.jpg" alt="" class="img-responsive" style="z-index:0.5;width:60%;height:100%;"/>
+                                    <div class="pix-details" style="position:absolute;top:0%;width:100%;">
+                                        <table class="table table-bordered" style="margin:20px 20px 20px 20px !important;padding:20px 20px 20px 20px !important;width:85%;">
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>John Doe</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Position</td>
+                                                <td>Lecturer II</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email</td>
+                                                <td>email@email.com</td>
+                                            </tr>
+                                        </table>
 
                                     </div>
                                 </div>
@@ -58,25 +73,25 @@ include('../includes/admin_header.php');
 
                                     <div class="col-md-3 col-sm-6 ">
                                         <div class="box" style="border-radius:10px;background-color:#c0c0c0;height:;">
-                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:black;display:block;text-decoration:none">Local Journal</a></strong> </h4>
+                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:#006600;display:block;text-decoration:none;font-family:arial narrow">Local Journal</a></strong> </h4>
                                     
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-6 ">
                                         <div class="box" style="border-radius:10px;background-color:#c0c0c0;height:;">
-                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:black;display:block;text-decoration:none">Int'l Journal</a></strong> </h4>
+                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:#006600;display:block;text-decoration:none;font-family:arial narrow">Int'l Journal</a></strong> </h4>
                                     
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-6 ">
                                         <div class="box" style="border-radius:10px;background-color:#c0c0c0;height:;">
-                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:black;display:block;text-decoration:none">My Books</a></strong> </h4>
+                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:#006600;display:block;text-decoration:none;font-family:arial narrow">My e-Books</a></strong> </h4>
                                     
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-6 ">
                                         <div class="box" style="border-radius:10px;background-color:#c0c0c0;height:;">
-                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:black;display:block;text-decoration:none">Seminar paper</a></strong> </h4>
+                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:#006600;display:block;text-decoration:none;font-family:arial narrow">Seminar paper</a></strong> </h4>
                                     
                                         </div>
                                     </div>
