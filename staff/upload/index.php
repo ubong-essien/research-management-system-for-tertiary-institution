@@ -1,6 +1,6 @@
 <?php
-include('../includes/main_header.php');
-include('../includes/connect.php');
+include('../../includes/main_header.php');
+include('../../includes/connect.php');
 $d=getdatabyreg($_SESSION['login_user_verified'],$con)
 ?>
 <div class="container" style="background-color:#;height:auto;margin-top:50px;">
@@ -23,48 +23,14 @@ $d=getdatabyreg($_SESSION['login_user_verified'],$con)
 					
                     <label class="input-group-addon">Session</label>
                     <select name="ses" class="form-control" id="ses" required >
-				<option value="" >-please select-</option>
+                      <option value="" >-Please select-</option>
+                      <option value="" >Local Journal</option>
+                      <option value="" >International Journal</option>
+                      <option value="" >Book</option>
+                      <option value="" >Seminar Paper</option>
 				
-				  <?php
-			
-					$sel = mysqli_query($con,"SELECT * FROM session_tb");	
-					if($sel){
-					while($row=mysqli_fetch_array($sel)){
-						$sesid=$row['SesID'];
-						$ses_name=$row['SesName'];
-						?>
-						<option  value='<?php echo $row['SesID'];?>'> <?php echo $row['SesName'];?> </option>
-						<?php
-						}
-					
-				}
-				else
-				{echo"cant run query";
-				}
-			?>
 				  </select>
-                  <label class="input-group-addon">Supervisor</label>
-                    <select name="lecturer" class="form-control" id="ses" required >
-				<option value="" >-please select-</option>
-				
-				  <?php
-			
-					$sel = mysqli_query($con,"SELECT * FROM supervisors WHERE ProgID={$d['ProgID']}");	
-					if($sel){
-					while($row=mysqli_fetch_array($sel)){
-						$pid=$row['id'];
-						$p_name=$row['Supervisor_name'];
-						?>
-						<option  value='<?php echo $row['id'];?>'> <?php echo $row['Supervisor_name'];?> </option>
-						<?php
-						}
-					
-				}
-				else
-				{echo"cant run query";
-				}
-			?>
-				  </select>
+              
                
                     <label class="input-group-addon">Phone Number</label>
                     <input type="text" class="form-control" name="phone" />
@@ -303,5 +269,5 @@ endif;
 </div><br/>
 <br/>
 <?php
-include('../includes/footer.php');
+include('../../includes/footer.php');
 ?>

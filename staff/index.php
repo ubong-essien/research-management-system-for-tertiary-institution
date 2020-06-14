@@ -13,7 +13,7 @@ include('../includes/admin_header.php');
                 <div class="col-md-3 col-sm-6 item">
                         <div class="box" style="border-radius:10px;background-color:#ffffff;height:70%;">
                             <i style="color:#006600;" class="fa fa-<?php echo $row['Icon']?> fa-3x"></i>
-                            <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:black;display:block;text-decoration:none;font-family:arial narrow"><?= $row['Link_Name']?></a></strong> </h4>
+                            <h4><strong><a href="<?= home_base_url()."staff/".$row['Link']?>" style="color:black;display:block;text-decoration:none;font-family:arial narrow"><?= $row['Link_Name']?></a></strong> </h4>
                         </div>
                 </div>
                 <?php
