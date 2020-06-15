@@ -3,47 +3,42 @@ include('../../includes/main_header.php');
 include('../../includes/connect.php');
 $d=getdatabyreg($_SESSION['login_user_verified'],$con)
 ?>
-<div class="container" style="background-color:#;height:auto;margin-top:50px;">
+<div class="container" style="background-color:#;height:auto;margin-top:50px;font-family:arial narrow"> 
+  <?php echo "<p style='color:blue;font-family:verdana;font-size:14px'>Welcome !".$_SESSION['login_user_verified']."</p>"?>
     <div class="row" style="margin-top:50px;margin-top:10px;">
 
-        <div class="col-md-4 hidden-print">
+        <div class="card col-md-6 hidden-print">
         <div class="panel panel-primary">
         <div class="panel-heading ">
-        <?php echo "<p style='color:blue;font-family:verdana;font-size:14px'>Welcome !".$_SESSION['login_user_verified']."</p>"?>Fill The Form Correctly
-        </div> <hr/>
-		<form id="verify" action="index.php" method="post" enctype="multipart/form-data">
-            <div class="panel-body">
-           
+     
+        </div> <br/>
+        <p class="alert alert-info">Create a New Research Entry</p>
+		        <form id="verify" action="index.php" method="post" enctype="multipart/form-data">
+               <div class="panel-body">
                 
-                    <label class="input-group-addon">Topic</label>
+                    <label class="input-group-addon">Reference Text (Type or copy and paste the research reference in APA or MLS style)</label>
                     <textarea type="text" class="form-control" name="topic" required></textarea>
 					
-					 <label  class="input-group-addon">Abstract <em style="color:red">(Paste a brief description of your project)</em></label>
+					         <label  class="input-group-addon">Abstract <em style="color:red">(Paste a brief description of your project)</em></label>
                     <textarea type="text" class="form-control" name="abstract" required></textarea>
 					
-                    <label class="input-group-addon">Session</label>
-                    <select name="ses" class="form-control" id="ses" required >
+                    <label class="input-group-addon">Publication Type</label>
+                    <select name="ses" class="form-control" id="pt" required >
+                      <option value="" >-Please select-</option>
+                      <option value="" >Research Paper</option>
+                      <option value="" >Book</option>
+                      <option value="" >Seminar/conference Paper</option>
+				            </select>
+                    <label class="input-group-addon">Publisher Category</label>
+                    <select name="ses" class="form-control" id="pc" required >
                       <option value="" >-Please select-</option>
                       <option value="" >Local Journal</option>
                       <option value="" >International Journal</option>
-                      <option value="" >Book</option>
-                      <option value="" >Seminar Paper</option>
-				
-				  </select>
-              
+				            </select>
                
-                    <label class="input-group-addon">Phone Number</label>
-                    <input type="text" class="form-control" name="phone" />
-					
-                    
                     <input type="hidden" class="form-control" value="<?php echo $_SESSION['login_user_verified'];?>" name="regno" />
                    
-					
-                    <label class="input-group-addon">Email Address</label>
-                    <input type="email" class="form-control" name="email" required />
-
-                  
-            </div>
+               </div>
 			<label >Select Your file* <em style="color:red">(only PDFs are allowed)</em></label><br/>
 								
 			<input type="file" name="pdffile" class="form-control"  required /><br/>
@@ -51,13 +46,14 @@ $d=getdatabyreg($_SESSION['login_user_verified'],$con)
             <div class="panel-footer">
             <input type="submit" class="btn btn-primary " name="verify" />
             </div> 
+            <br/>
              </form>
              
             </div>
            
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-6">
 		
 		        <?php
 		
