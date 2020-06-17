@@ -70,63 +70,46 @@
     </section>
     <!--modals for display of why choose AKSU-->
     
-<div class="modal fade" id="login" tabindex="-1" role="dialog"
- aria-labelledby="login" aria-hidden="true" >
-
- <div class="modal-dialog modal-md" style="background-color:#006600;" >
- <div class="modal-content" style="font-family:verdana;background-color:#efefef;">
- <div class="modal-header">
-
- <h4 class="modal-title" id="login" style="color:orange;">
-Enter Your Username and Password
-</h4>
- </div>
- <div class="modal-body">
-    <form id="loginform">
-                <div id="login-box" style="margin-left:100px;">
-                    <label style="color:#003300;">Username</label>  
-                    <input type="text" class="form-control" name="username" style="width:250px;margin-left" >
-                    <label style="color:#003300;">Password</label>  
-                    <input type="Password" class="form-control" name="pass" style="width:250px;" ><br/>
-                    <button class="btn btn-primary"  style="width:250px;">Login</button><br/>
-                    <a href="#">Forgot Password</a>
-                </div>
-    </form>
-    <div id="regstage"></div>
-</div>
-    <div class="modal-footer">
-    <button type="button" class="btn btn-default"
-    data-dismiss="modal">Cancel
-    </button>
-    </div>
- </div> <!-- /.modal-content -->
-</div>  <!-- /modal -->
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" >
+    <div class="modal-dialog modal-lg" style="background-color:#006600;" >
+        <div class="modal-content" style="font-family:verdana;background-color:#efefef;">
+          <div class="modal-header">
+          <h4 class="modal-title" id="signup" style="color:orange;">Choose the category </h4>
+          </div>
+            <div class="modal-body">
+                <form id="signupform">
+                            <div id="login-box" style="margin:10px;">
+                               <div class="row">
+                                  <div class=" card col-md-4">
+                                  <label for="user_type" style="font-family:arial narrow;font-size:20px;text-align:center;font-weight:bolder">Undergraduate</label>
+                                  <input type="radio" id="user_type" name="user_type" class="form-control" value="U" style="height:80px;width:80px;display:block;margin-left:30%">
+                                  <br/>
+                                  </div>
+                                
+                                  <div class="card col-md-4">
+                                  <label for="user_type" style="font-family:arial narrow;font-size:20px;text-align:center;font-weight:bolder">Postgraduate</label>
+                                  <input type="radio" id="user_type" name="user_type" class="form-control" value="P" style="height:80px;width:80px;display:block;margin-left:30%">
+                                  <br/>
+                                  </div>
+                                  
+                                  <div class="card col-md-4">
+                                  <label for="user_type" style="font-family:arial narrow;font-size:20px;text-align:center;font-weight:bolder">Staff Only</label>
+                                  <input type="radio" id="user_type" name="user_type" class="form-control" value="S" style="height:80px;width:80px;display:block;color:#003300;margin-left:30%">
+                                  <br/>
+                                  </div>
+                               </div><br/>
+                               <button type="submit" class="btn btn-primary " name="continue"  >Continue <li class="fa fa-forward"></li></button>
+                            </div>
+                </form>
+                <img src="<?php echo home_base_url();?>/img/ajax-loader.gif" id="loadingimg" style="display:none;"/>
+                <div id="regstage"></div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div> <!-- /.modal-content -->
+    </div>  <!-- /modal -->
 </div>
 <img src="<?php echo home_base_url();?>/img/ajax-loader.gif" id="loadingimg" style="display:none;"/>
 
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	 $('#loginform').submit(function(e){
-		 $('#loadingimg').css('display:block;');
-		// alert("yeeeea")
-		 e.preventDefault();
-		var regdata=$(this).serialize();
-		
-		  //alert(regdata);
-		    $.ajax({ 
-                type:'POST',
-				url:'handlers/login_handler.php',
-                data:regdata,
-				success:function(html){
-					$('#loadingimg').css('display:none;');
-					$('#regstage').html(html);
-					
-				
-											
-									}
-				
-            });  
-		});
- }); 		
-</script>
+

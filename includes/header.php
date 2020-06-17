@@ -63,6 +63,7 @@ include('function.php');
 		
 		<a  href="<?php echo home_base_url();?>index.php" class="btn btn-success btn-sm"> <li class="fa fa-home"></li> Home</a>
 		<a  href="<?php echo home_base_url();?>login.php" class="btn btn-primary btn-sm"> <li class="fa fa-key"></li> login</a>
+		<a  data-toggle="modal"	data-target="#signup" href="#signup" title="Signup" class="btn btn-success btn-sm"> <li class="fa fa-upload"></li> Sign Up</a>
 		<a  href="<?php echo home_base_url();?>main/index.php" class="btn btn-success btn-sm"> <li class="fa fa-search"></li> Search</a>
 		
 		<a  href="<?php echo home_base_url();?>logout.php" class="btn btn-danger btn-sm"> <li class="fa fa-power-off"></li> logout</a>

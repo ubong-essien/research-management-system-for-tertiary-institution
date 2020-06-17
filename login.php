@@ -37,9 +37,7 @@ include('includes/login_header.php');
 ?>
 	<script type="text/javascript">
 	
-	function addloading(id){
-		
-	}
+
 $(document).ready(function(){
 	$('#loginform').submit(function(e){
 		 $('#submit').removeClass('fa-sign-in');

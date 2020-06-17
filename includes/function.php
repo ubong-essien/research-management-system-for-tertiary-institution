@@ -335,6 +335,8 @@ if(isset($user)&& isset($pass))
 								}
 								else
 								{
+
+									
 											echo "<div class=\"alert aler-danger\">Password is incorrect.</div>";
 								}//end of row chk.
 											
@@ -1198,4 +1200,15 @@ return;
 		Updatedbtb($conn,"submissions",$fieldsVal,"id='$file_id'");
 
 		return;
+}
+function getstudname($regNo,$conn){
+	if(isset($regNo)){
+		
+	$get_q=getAllRecord($conn,"studentinfo_tb","RegNo like '$regNo' OR JambNo like '$regNo'","","");
+	
+	$st_arr=mysqli_fetch_array($get_q);
+	$stud_name = strtoupper($st_arr['SurName'])." ".$st_arr['FirstName']. " ".$st_arr['OtherNames'];
+	return $stud_name;			
+	}
+		
 }

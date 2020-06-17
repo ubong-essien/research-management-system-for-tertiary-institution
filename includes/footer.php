@@ -48,6 +48,7 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src="<?php echo home_base_url();?>vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo home_base_url();?>assets/js/app.js"></script>
     <script src="<?php echo home_base_url();?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
