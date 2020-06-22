@@ -2,15 +2,29 @@
 require_once('../includes/function.php');
 require_once('../includes/connect.php');
 	$getPLtFNAME = $_GET['link'];
-	//echo $getPLtFNAME;
+    $source = $_GET['source'];
+    //source is 1 for student and 3 for staff 
+    //echo $getPLtFNAME;
+     $dir="";
+    $file="";
+
 	if(isset($getPLtFNAME)){
 
-    $var_1 = $getPLtFNAME;
-//    $file = $var_1;
+    $var_1 = $getPLtFNAME;//file name of the downloaded file
 
-$dir = "../research_files/"; // trailing slash is important
-$file = $dir . $var_1;
- count_download($var_1,$con);
+    if($source == 1){
+        $dir = "../research_files/"; // trailing slash is important
+        $file = $dir . $var_1;
+      //  echo $file;
+        count_download($var_1,$con);
+
+    }else if($source == 3){
+        $dir = "../research_files/staff_research/"; // trailing slash is important
+        $file = $dir . $var_1;
+       // echo $file;
+        staff_count_download($var_1,$con);
+    }
+//die();
 if (file_exists($file))
     {
         //header("Content-Type: application/octet-stream");

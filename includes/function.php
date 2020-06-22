@@ -831,11 +831,39 @@ function if_exist($conn,$chkfield,$checkitem,$tblname){
 	}
 	
 }
+/************************************ */
+////CHEK IF RECORD EXIST
+function if_user_exist($conn,$chkfield,$checkitem,$tblname){
+	$chkresult=getAllRecord($conn,$tblname,$where="$chkfield='$checkitem'","","");
+	$numrow=mysqli_num_rows($chkresult);
+	$row=mysqli_fetch_array($chkresult);
+	
+	if($numrow > 0)
+	{
+		echo "<p class='alert alert-danger'>Error 1212!..Duplicate entry is not allowed on the system.Your record already exist on the system</p>";
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+	
+}
 /****************************************************/
 function getuploadbyreg($regNo,$conn){
 	if(isset($regNo)){
 		
 	$get_q=getAllRecord($conn,"submissions","RegNo like '$regNo'","","");
+	
+	$st_arr=mysqli_fetch_array($get_q);
+					}
+		return $st_arr;
+}
+//////////////////////////////
+function getnewstaff($email,$conn){
+	if(isset($email)){
+		
+	$get_q=getAllRecord($conn,"staff_tb","Email like '$email'","","");
 	
 	$st_arr=mysqli_fetch_array($get_q);
 					}
@@ -1211,4 +1239,106 @@ function getstudname($regNo,$conn){
 	return $stud_name;			
 	}
 		
+}
+
+//////////////////////////////
+function get_staff_subm_by_cat($type,$uid,$conn){
+	if(isset($type)){
+		
+	$get_q=getAllRecord($conn,"staff_submission","publication_cat = '$type'and user_id='$uid'","","");
+	
+	$st_arr=mysqli_fetch_array($get_q);
+	$num=mysqli_num_rows($get_q);
+	return array($st_arr,$num);
+					}
+	
+}
+//////////////////////////////////////////////////////////////////////////////////
+function get_staff_subm_by_type($type,$uid,$conn){
+	if(isset($type)){
+		
+	$get_q=getAllRecord($conn,"staff_submission","publication_type = '$type' and user_id='$uid'","","");
+	
+	$st_arr=mysqli_fetch_assoc($get_q);
+	$num=mysqli_num_rows($get_q);
+	return array($st_arr,$num);
+					}
+		
+}
+function get_all_pub_for_user($uid,$conn){
+	if(isset($uid)){
+
+	$get_q=getAllRecord($conn,"staff_submission"," user_id='$uid'","publication_type ASC","");
+	
+	$st_arr=mysqli_fetch_assoc($get_q);
+	$num=mysqli_num_rows($get_q);
+	return array($st_arr,$num);
+					}
+		
+}
+function decode_pub_type($type,$conn){
+	if(isset($type)){
+		
+	$get_q=getAllRecord($conn,"publication_type","id = '$type'","","");
+	
+	$st_arr=mysqli_fetch_assoc($get_q);
+	return $st_arr['pub_type'];
+	
+					}
+		
+}
+function get_total_subm($uid,$conn){
+	
+	$get_q=getAllRecord($conn,"staff_submission","publication_type IN(1,2,3,4,5) and user_id = '$uid'","","");
+	//var_dump($get_q);
+	$st_arr=mysqli_fetch_array($get_q);
+	$num=mysqli_num_rows($get_q);
+	return array($st_arr,$num);
+					
+		
+}
+function load_modal($topic,$token,$abstract,$pub_details,$downloads){
+
+	$modal =  "<div id='submission".$token."' class='modal fade' role='dialog'>
+					  <div class='modal-dialog modal-lg'>
+
+						<!-- Modal content-->
+						<div class='modal-content'>
+						  <div class='modal-header'>
+							
+							<h4 class='modal-title'><b style='color:red;'>Topic:</b>".$topic."</h4>
+						  </div>
+						  <div class='modal-body'>
+							<p><b style='color:red;'>Abstract:</b>".$abstract."</p>
+						  </div>
+						  <div class='modal-footer'>
+						  <p><b style='color:red;'>Publisher's details:</b>".$pub_details."</p>
+						  <p><b style='color:green;'>Downloads:</b>".$downloads."</p>
+						  
+						  <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+						  </div>
+						</div>
+
+					  </div>
+					</div>";
+return $modal;
+}
+/*********************************** */
+
+function staff_count_download($file,$conn){
+		//echo $file;
+	$p=getAllRecord($conn,"staff_submission","file like '$file'","","");
+	
+	$s_arr=mysqli_fetch_array($p);
+		$download=$s_arr['download'];
+		$file_id=$s_arr['id'];
+		
+		$newdownload=($download + 1);
+		
+		$fieldsVal=array(
+		'download'=>$newdownload
+		);
+		Updatedbtb($conn,"staff_submission",$fieldsVal,"id='$file_id'");
+
+		return;
 }

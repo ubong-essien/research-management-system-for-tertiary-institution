@@ -11,6 +11,18 @@
  
 
 }); */
+function addloader(){
+
+	$('.loader').removeClass('fa-upload');
+	$('.loader').addClass('fa-cog fa-spin');
+	}
+	function removeloader(){
+	$('.loader').removeClass('fa-cog fa-spin');
+	$('.loader').addClass('fa-upload');
+
+	}
+
+
 function rootname(){
   var HOST = $(location).attr('hostname');
   var protocol = $(location).attr('protocol');
@@ -61,7 +73,7 @@ function rootname(){
      // alert("yeeeea")
       e.preventDefault();
      var userdata =$(this).serialize();
-       //alert(userdata);
+      // alert(userdata);
       //return;
      // var url = '<?php echo home_base_url();?>';
               
@@ -70,7 +82,6 @@ function rootname(){
                 var ful_url = "undergraduate/signup.php";
                // alert(ful_url);
                 $(location).attr('href',ful_url);
-              
               
               break;
               case "user_type=P":
@@ -81,7 +92,7 @@ function rootname(){
               break;
               case "user_type=S":
                 var ful_url = "staff/signup.php";
-               // alert(ful_url);
+                alert(ful_url);
                 $(location).attr('href',ful_url);
                
               break;
@@ -102,7 +113,7 @@ $(document).ready(function(){
 		//alert("yeeeea");
 		 e.preventDefault();
 		var regdata=$(this).serialize();
-		
+  
 		 // alert(regdata);
 		     $.ajax({ 
                 type:'POST',
@@ -188,5 +199,77 @@ $(document).ready(function(){
      
          });  
  });
+
+/***************************************************** */
+
+$("#staffupload").submit(function(e){
+		
+  //alert("jhfds");
+  addloader();
+  //return;
+  e.preventDefault(e);
+     var formData = new FormData($(this)[0]);
+     var pt = $('#pt').val();
+     var abstract = $('#abstract').val();
+     var rt = $('#rt').val();
+     var pc = $('#pc').val();
+     var pub_details =  $('#pub_details').val();
+     var staff =  $('#staff').val();
+     var topic =  $('#topic').val();
+
+     formData.append('pt',pt); 
+     formData.append('topic',topic); 
+     formData.append('abstract',abstract); 
+     formData.append('rt',rt); 
+     formData.append('pc',pc); 
+     formData.append('pub_details',pub_details); 
+     formData.append('staff',staff); 
+     
+   // var rec_data =$('#staffupload').serialize();
+    
+    alert(formData);
+    //return;
+    //formData.append('form_data',rec_data);
+   // alert(formData);
+    //formData.append('img_name',img_name);
+    //console.log(formData.values());
+    //return;
+      $.ajax({
+      type: "POST",
+      url: rootname() + 'handlers/staff_upload_handler.php', // Url to which the request is send
+      data: formData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+      contentType: false,       // The content type "used when sending data to the server.
+      cache: false,             // To unable request pages to be cached
+      processData:false,        // To send DOMDocument or non processed data file it is set to false
+      success: function(html)   // A function to be called if request succeeds
+      {
+        console.log(html);
+        removeloader();
+      $('#message').html(html);
+      alert('Data Saved Successfully!!');
+      location.reload().delay(2000);
+     /*  $('staffupload').fadeOut(800,function(){
+        $('staffupload').html(html).fadeIn().delay(2000);
+      }); */
+      }
+    });  
+
+  });
+
+  
  }); 
+
+ $("#pt").change(function(e){
+ 
+  var pub_type = $('#pt').val();
+  console.log(pub_type);
+    //var pub_type =$('#pt').val();
+  if((pub_type == 1)){
+    $('#pub_cat').show();
+   }else{
+    $('#pub_cat').hide();
+   }
+  
+  });
+
   

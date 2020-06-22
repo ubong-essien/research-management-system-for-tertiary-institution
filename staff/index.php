@@ -1,6 +1,9 @@
 <?php
 // this index page will have some menu for 1=upload,2=view all ,3=logout,4 = explore all research works
-include('../includes/admin_header.php');
+include('../includes/staff_header.php');
+$email = $_SESSION['login_user_verified'];
+$login_staff = getnewstaff($email,$con);
+
 ?>
 <div class="features-boxed" >
         <div class="container" style="margin-top:15px;background-color:#808080">
@@ -21,82 +24,83 @@ include('../includes/admin_header.php');
 				?>
               
             </div>
+     
             
-		<div class="row features" style="margin-top:-60px;">
+		<div class="row features" style="margin-top:-80px;">
 	
                 <div class="col-md-12 col-sm-12 item">
                     <div class="box" style="border-radius:10px;background-color:#ffffff">
                         <div class="row">
-                            <div class="col-md-4 col-xs-12">
-                               <!--  <table class="table table-bordered table-hover">
-                                <tr>
-                                <td>Name: </td>
-                                <td>Ubong Essien</td>
-                                </tr>
-                                <tr>
-                                <td>Position: </td>
-                                <td>lecturer 1</td>
-                                </tr>
-                                <tr>
-                                <td>Email: </td>
-                                <td>email@e-mail.com:</td>
-                                </tr>
-                                <tr>
-                                <td>Email: </td>
-                                <td>email@e-mail.com:</td>
-                                </tr>
-                                </table> -->
-                                <div class=" pix" style="background-color:#ffffff;height:100%;cursor:pointer;position:relative;">
-                                    <img src="<?= home_base_url()?>img/testimonials-1.jpg" alt="" class="img-responsive" style="z-index:0.5;width:60%;height:100%;"/>
-                                    <div class="pix-details" style="position:absolute;top:0%;width:100%;">
-                                        <table class="table table-bordered" style="margin:20px 20px 20px 20px !important;padding:20px 20px 20px 20px !important;width:85%;">
+                            <div class="col-md-4 col-xs-12 col-sm-6">
+                            
+                                <div class=" col-md-12" style="background-color:#ffffff;cursor:pointer;padding-bottom:10px;">
+                                    <img src="<?= home_base_url();?>staffpassport/<?= $login_staff['Passport'];?>" alt="" class="img-responsive" width="270px" height="270px;"/>
+                                 </div>  
+                                 <div class=" col-md-12 pix-detail" style="">
+                                        <table class="table table-bordered" style="font-size:13px">
                                             <tr>
                                                 <td>Name</td>
-                                                <td>John Doe</td>
+                                                <td><b><?= strtoupper($login_staff['StaffName']);?></b></td>
                                             </tr>
                                             <tr>
                                                 <td>Position</td>
-                                                <td>Lecturer II</td>
+                                                <td><?= $login_staff['Rank'];?></td>
                                             </tr>
                                             <tr>
                                                 <td>Email</td>
-                                                <td>email@email.com</td>
+                                                <td><?= $login_staff['Email'];?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Staff Number</td>
+                                                <td><?= $login_staff['StaffSchID'];?></td>
                                             </tr>
                                         </table>
 
                                     </div>
-                                </div>
+                                    
                             </div>
-                            <div class="col-md-8 col-xs-12">
+                            <div class="col-md-8 col-sm-6 col-xs-12">
                             <p class="alert alert-primary">This shows a breakdown of research works by you</p>
-                            <div class="row">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                        
+                                          <?php
+                                            $sel = mysqli_query($con,"SELECT * FROM publication_type ORDER BY link_order ASC");	
+                                            //var_dump($sel);
+                                           // die();
+                                        if($sel){
+                                        while($rowss = mysqli_fetch_array($sel)){
+                                            $pid=$rowss['id'];
+                                            $p_type=$rowss['pub_type'];
 
-                                    <div class="col-md-3 col-sm-6 ">
-                                        <div class="box" style="border-radius:10px;background-color:#c0c0c0;height:;">
-                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:#006600;display:block;text-decoration:none;font-family:arial narrow">Local Journal</a></strong> </h4>
-                                    
-                                        </div>
+                                            $data = array('x' => $pid
+                                                        );
+                                                            
+                                               // echo http_build_query($data);
+                                            ?>
+                                                <div class="col-md-4 col-sm-6 col-xs-6">
+                                                    <div class="box" style="border-radius:10px;background-color:#c0c0c0;height:;">
+                                                    <h2 style="text-align:center;font-family:arial black;padding:0px;" ><?php $no = get_staff_subm_by_type($pid,$login_staff['StaffID'],$con); echo $no['1'] ?></h2>
+                                                    <h4><strong><a href="<?= home_base_url().'staff/staff_view.php?'. http_build_query($data);?>" style="color:#006600;display:block;text-decoration:none;font-family:arial narrow;padding:-10px;"><?= $p_type;?></a></strong> </h4>
+                                                    
+                                                    </div>
+                                                </div>
+                                        <?php
+                                            }
+                                        }    
+                                      
+                                   ?>
+                                     <div class="col-md-4 col-sm-6 col-xs-6 ">
+                                                    <div class="box" style="border-radius:10px;background-color:#c0c0c0;height:;">
+                                                    <h2 style="text-align:center;font-family:arial black;padding:0px;" ><?php $no = get_total_subm($login_staff['StaffID'],$con); echo $no['1'] ?></h2>
+                                                    <h4><strong><a href="<?= home_base_url().'staff/all_view.php';?>" style="color:#006600;display:block;text-decoration:none;font-family:arial narrow">Total Publications</a></strong> </h4>
+                                                    
+                                                    </div>
+                                       </div>       
+                                        
                                     </div>
-                                    <div class="col-md-3 col-sm-6 ">
-                                        <div class="box" style="border-radius:10px;background-color:#c0c0c0;height:;">
-                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:#006600;display:block;text-decoration:none;font-family:arial narrow">Int'l Journal</a></strong> </h4>
-                                    
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 ">
-                                        <div class="box" style="border-radius:10px;background-color:#c0c0c0;height:;">
-                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:#006600;display:block;text-decoration:none;font-family:arial narrow">My e-Books</a></strong> </h4>
-                                    
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 ">
-                                        <div class="box" style="border-radius:10px;background-color:#c0c0c0;height:;">
-                                        <h4><strong><a href="<?= home_base_url()."users/".$row['Link']?>" style="color:#006600;display:block;text-decoration:none;font-family:arial narrow">Seminar paper</a></strong> </h4>
-                                    
-                                        </div>
-                                    </div>
-                                
-                            </div>
+                                </div>
                             </div>
                         </div>
 						
@@ -105,4 +109,8 @@ include('../includes/admin_header.php');
             
            </div>
         </div>
+        </div>
     </div>
+    <?php
+include('../includes/footer.php');
+?>

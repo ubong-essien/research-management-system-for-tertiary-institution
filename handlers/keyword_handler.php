@@ -55,7 +55,7 @@ include('../includes/function.php');
 								<?php
 								echo "<h6 style='color:;text-transform:uppercase;font-family:san-serif'><a href='#submission{$row['id']}' title='Click to view decription' data-toggle='modal' data-target='#submission{$row['id']}'>".$row['Submission_Title']."</a></h6>";
 								echo "<section style='text-align:justify;font-family:san-serif;padding:10px;'>".word_teaser($row['descr'],56)."...</section>";
-								echo "<a title='View File' href='../research_files/{$row['File']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li> </a>  <a href='download.php?link={$row['File']}' title='Download file' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['id']}' title='view author's profile' data-toggle='modal' data-target='#profile{$row['id']}' class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a><span style='margin-left:78%;font-family:san-serif;font-size:12px;color:#003300;'>Downloads: {$row['downloads']}</span>"
+								echo "<a title='View File' href='../research_files/{$row['File']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li> </a>  <a href='download.php?link={$row['File']}&source=1' title='Download File' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['id']}' title='view author's profile' data-toggle='modal' data-target='#profile{$row['id']}' class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a><span style='margin-left:78%;font-family:san-serif;font-size:12px;color:#003300;'>Downloads: {$row['downloads']}</span>"
 						
 								?>
 								<hr/>

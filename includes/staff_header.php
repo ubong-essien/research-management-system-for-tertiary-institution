@@ -24,9 +24,8 @@ include('function.php');
     <link rel="stylesheet" href="<?php echo home_base_url();?>assets/css/Features-Boxed.css" />
     <link rel="stylesheet" href="<?php echo home_base_url();?>assets/css/Material-Card.css" />
     <link rel="stylesheet" href="<?php echo home_base_url();?>assets/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="<?php echo home_base_url();?>assets/css/Material-Card.css" />
     <link rel="stylesheet" href="<?php echo home_base_url();?>assets/css/datatables.min.css" />
-    <link rel="stylesheet" href="<?php echo home_base_url();?>assets/css/added.css" />
+    <link rel="stylesheet" href="<?php echo home_base_url();?>css/added.css" />
     <!-- Custom styles for this template -->
     <link href="<?php echo home_base_url();?>css/landing-page.min.css" rel="stylesheet">
     <style type="text/css">
@@ -62,13 +61,18 @@ include('function.php');
         <div class="navbar-header">
 		
 		
-		<a  href="<?php echo home_base_url();?>index.php" class="btn btn-success btn-sm"> <li class="fa fa-home"></li> Home</a>
-		<a  href="<?php echo home_base_url();?>login.php" class="btn btn-primary btn-sm"> <li class="fa fa-key"></li> login</a>
-		<a  data-toggle="modal"	data-target="#signup" href="#signup" title="Signup" class="btn btn-success btn-sm"> <li class="fa fa-upload"></li> Sign Up</a>
+		<a  href="<?php echo home_base_url();?>staff/index.php" class="btn btn-success btn-sm"> <li class="fa fa-home"></li> Home</a>
+    <?php	if(!isset($_SESSION['login_user_verified'])):
+      echo" <a  href='".home_base_url()."login.php' class='btn btn-danger btn-sm'> <li class='fa fa-power-off'></li> Login</a>";
+      echo "<a  data-toggle='modal'	data-target='#signup' href='#signup' title='Signup' class='btn btn-success btn-sm'> <li class='fa fa-upload'></li> Sign Up</a>";
+  endif;
+    ?> 
+	
 		<a  href="<?php echo home_base_url();?>main/index.php" class="btn btn-success btn-sm"> <li class="fa fa-search"></li> Search</a>
-		
-		<a  href="<?php echo home_base_url();?>logout.php" class="btn btn-danger btn-sm"> <li class="fa fa-power-off"></li> logout</a>
-        
+	<?php	if(!isset($_SESSION['login_user_verified'])):
+      echo" <a  href='".home_base_url()."logout.php' class='btn btn-danger btn-sm'> <li class='fa fa-power-off'></li> logout</a>";
+  endif;
+    ?>    
       </div>
 	  </div>
     </nav>

@@ -46,7 +46,7 @@ include('../includes/function.php');
 								<?php
 								echo "<h6 style='color:blue;text-transform:uppercase;font-family:times new romans'><a href='#submission{$row['id']}' data-toggle='modal' title='Click to view description' data-target='#submission{$row['id']}'>".$row['Submission_Title']."</a></h6>";
 								echo "<p style='text-align:justify;font-family:san-serif;padding:10px;'>".word_teaser($row['descr'],40)."...</p>";
-								echo "<a href='../research_files/{$row['File']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li></a>  <a href='download.php?link={$row['File']}' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['id']}' data-toggle='modal' data-target='#profile{$row['id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a><span style='margin-left:78%;font-family:san-serif;font-size:12px;color:#003300;'>Downloads: {$row['downloads']}</span>"
+								echo "<a href='../research_files/{$row['File']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li></a>  <a href='download.php?link={$row['File']}&source=1' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['id']}' data-toggle='modal' data-target='#profile{$row['id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a><span style='margin-left:78%;font-family:san-serif;font-size:12px;color:#003300;'>Downloads: {$row['downloads']}</span>"
 						
 								?>
 								<hr/>
