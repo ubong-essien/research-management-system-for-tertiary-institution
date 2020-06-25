@@ -1,6 +1,8 @@
 <?php
 include('connect.php');
 include('function.php');
+$setting=load_settings($con);
+$setting['layout'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +30,23 @@ include('function.php');
     <link rel="stylesheet" href="<?php echo home_base_url();?>css/added.css" />
     <!-- Custom styles for this template -->
     <link href="<?php echo home_base_url();?>css/landing-page.min.css" rel="stylesheet">
-    <style type="text/css">
+    
+<style type="text/css">
+
+.inv-proGresBar{width:900px!important;height:5px;}
+.inv-proGRa{animation: progbar 0.6s infinite;width:150px;height: 5px;background-color: rgb(255, 136, 0);}
+/* Safari 4.0 - 8.0 */ 
+@-webkit-keyframes progbar {
+    0%   {margin-left:0px; top:1px;}
+    100%  {margin-left:100%; top:1px;}
+}
+
+/* Standard syntax */
+@keyframes progbar {
+    0%   {margin-left:0px; top:1px;}
+    100%  {margin-left:100%; top:1px;}
+}
+
 	@keyframes bounce {
 	0%, 20%, 60%, 100% {
 		-webkit-transform: translateY(0);
@@ -49,6 +67,8 @@ include('function.php');
 .item:hover {
 	animation: bounce 1s;
 }
+
+
     </style>
   </head>
 
@@ -69,7 +89,7 @@ include('function.php');
     ?> 
 	
 		<a  href="<?php echo home_base_url();?>main/index.php" class="btn btn-success btn-sm"> <li class="fa fa-search"></li> Search</a>
-	<?php	if(!isset($_SESSION['login_user_verified'])):
+	<?php	if(isset($_SESSION['login_user_verified'])):
       echo" <a  href='".home_base_url()."logout.php' class='btn btn-danger btn-sm'> <li class='fa fa-power-off'></li> logout</a>";
   endif;
     ?>    

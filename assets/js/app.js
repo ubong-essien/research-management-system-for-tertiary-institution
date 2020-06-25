@@ -1,16 +1,234 @@
-/* $(document).ready(function(){
- 
-  var data=[{"label":"Agricultural Economics and Extension","value":0},
-  {"label":"Animal Science","value":0},
-  {"label":"Crop Science","value":0},
-  {"label":"Soil Science","value":0},
-  {"label":"English ","value":0},
-  {"label":"History and International Studies","value":0},
-  {"label":"Religious and Cultural Studies","value":0},
-  {"label":"Mass Communication","value":0}]
- 
 
-}); */
+///////staff js scri[ts]
+/********************staff 
+          * javascript 
+          * script
+ ************************* */
+
+$(document).ready(function(){
+	
+		 $('#search').submit(function(e){
+			 
+			 $('#progbar').show();
+			 var srch = $('#srch').val();
+			 if(!(srch=="")){
+				 
+		//alert("yeeeea")
+		 e.preventDefault();
+		var regdata=$(this).serialize();
+		
+		//alert(regdata);
+		     $.ajax({ 
+                type:'POST',
+				url:'../../handlers/staff_explore_handlers/keyword_handler.php',
+                data:regdata,
+				success:function(data){
+					$('#progbar').hide();
+					$('#stage').html(data);
+					
+									}
+				
+					});  
+				}else{
+					$('#progbar').hide();
+					$('#emtpymsg').html("<p style='color:red'>Please specify a search criteria</p>");
+					return false;
+				}
+        });
+		
+   
+
+function showloader(){
+		$('#progbar').show();
+		return;
+}
+
+function hideloader(){
+		
+		$('#progbar').hide();
+		return;
+} 
+
+staff_send = function(id){
+	//alert("call loader");
+	$('#progbar').show();
+	
+	var dptid=id;
+	$.ajax({ 
+                type:'POST',
+			        	url:'../../handlers/staff_explore_handlers/getdpt.php',
+                data:{Dept:dptid},
+				        success:function(html){
+					//alert(html);
+					// $('#stage').hide();
+					$('#progbar').hide();
+					 $('#stage').html(html);
+					
+									}
+				
+            }); 
+	return;
+}
+/**********************************/
+sendyr = function(id){
+	$('#progbar').show();
+	
+	var yrid=id;
+	$.ajax({ 
+                type:'POST',
+				url:'../../handlers/staff_explore_handlers/getyear.php',
+                data:{Yr:yrid},
+				success:function(html){
+					//alert(html);
+					// $('#stage').hide();
+					$('#progbar').hide();
+					 $('#stage').html(html);
+					
+									}
+				
+            }); 
+	
+	
+	return;
+}
+/*******************************/
+sendsup = function(id){
+	$('#progbar').show();
+	
+	var sup=id;
+	$.ajax({ 
+                type:'POST',
+				url:'../../handlers/staff_explore_handlers/getsupervisor.php',
+                data:{sup_id:sup},
+				success:function(html){
+					//alert(html);
+					// $('#stage').hide();
+					$('#progbar').hide();
+					 $('#stage').html(html);
+					
+									}
+				
+            }); 
+	
+	
+	return;
+}
+/*******************************/
+
+function paginate(page){
+	$('#progbar').show();
+	var p=page;
+	//alert(p);
+	/* var f=<?php echo $_SESSION['search_key'];?>
+	alert(f); */
+	//$('#srch').val();
+	
+	 
+	$.ajax({ 
+                type:'POST',
+				url:'../../handlers/staff_explore_handlers/keyword_handler.php',
+                data:{currentpage:page},
+				success:function(html){
+					//alert(html);
+					// $('#stage').hide();
+					$('#progbar').hide();
+					 $('#stage').html(html);
+					
+									}
+				
+            });  
+	
+	return;
+	
+}
+/******************************************/
+function paginatedpt(page){
+	$('#progbar').show();
+	var p=page;
+	//alert(p);
+	/* var f=<?php echo $_SESSION['search_key'];?>
+	alert(f); */
+	//$('#srch').val();
+	
+	 
+	$.ajax({ 
+                type:'POST',
+				url:'../../handlers/staff_explore_handlers/getdpt.php',
+                data:{currentpage:page},
+				success:function(html){
+					//alert(html);
+					// $('#stage').hide();
+					$('#progbar').hide();
+					 $('#stage').html(html);
+					
+									}
+				
+            });  
+	
+	return;
+	
+}
+/*****************************************/
+function getsup(page){
+	$('#progbar').show();
+	var p=page;
+	//alert(p);
+	/* var f=<?php echo $_SESSION['search_key'];?>
+	alert(f); */
+	//$('#srch').val();
+	
+	 
+	$.ajax({ 
+                type:'POST',
+				url:'../../handlers/staff_explore_handlers/getsupervisor.php',
+                data:{currentpage:page},
+				success:function(html){
+					//alert(html);
+					// $('#stage').hide();
+					$('#progbar').hide();
+					 $('#stage').html(html);
+					
+									}
+				
+            });  
+	
+	return;
+	
+}
+
+/*****************************************/
+function paginateyr(page){
+	$('#progbar').show();
+	var p=page;
+	//alert(p);
+	/* var f=<?php echo $_SESSION['search_key'];?>
+	alert(f); */
+	//$('#srch').val();
+	
+	 
+	$.ajax({ 
+                type:'POST',
+				url:'../../handlers/staff_explore_handlers/getyear.php',
+                data:{currentpage:page},
+				success:function(html){
+					//alert(html);
+					// $('#stage').hide();
+					$('#progbar').hide();
+					 $('#stage').html(html);
+					
+									}
+				
+            });  
+	
+	return;
+	
+}
+
+}); 
+
+
+
+ /***************end of staff scripts******************** */
 function addloader(){
 
 	$('.loader').removeClass('fa-upload');
@@ -145,13 +363,13 @@ $(document).ready(function(){
             if(response == "AA")
             {
               setTimeout(
-                $('#response_stage').append("<p style='color:green'>Login Details Created Successfully,Please click Login to login with Your registration Number and accesscode</p>"),2000
+                $('#response_stage').html("<p style='color:green'>Login Details Created Successfully,Please click Login to login with Your registration Number and accesscode</p>"),2000
               );
             }
             else if(response == "***")
             {
               setTimeout(
-                $('#response_stage').append("<p style='color:red'>Error Creating Account...!</p>"),2000
+                $('#response_stage').html("<p style='color:red'>Error Creating Account...!</p>"),2000
               );
             }
 					
@@ -182,12 +400,12 @@ $(document).ready(function(){
 
               switch(text){
                     case "XXX":
-                      $('#response_stage').append("<p style='color:red'>Account already exist..please click Login to login with you credentials !!</p>");
+                      $('#response_stage').html("<p style='color:red'>Account already exist..please click Login to login with you credentials !!</p>");
                     break;
                     case "###":
-                      $('#response_stage').append("<p style='color:green'>Registration Number verification complete...</p>");
+                      $('#response_stage').html("<p style='color:green'>Registration Number verification complete...</p>");
                       setTimeout(
-                        $('#response_stage').append("<p style='color:red'>Preparing to create Login details...</p>"),40000
+                        $('#response_stage').html("<p style='color:red'>Preparing to create Login details...</p>"),40000
                       );
                       setTimeout(create_login(reg_num),2000);
                     break;
@@ -255,7 +473,38 @@ $("#staffupload").submit(function(e){
     });  
 
   });
+/********************function to edit profile************************* */ 
+  $('#form_edit_profile').submit(function(e){
+    e.preventDefault(e);
+  //alert("uwa");
+  //return;
+    $('#edit_submit').removeClass('fa-save');
+    $('#edit_submit').addClass('fa-cog fa-spin');
+  //alert("yeeeea");
+  
+  var regdata=$(this).serialize();
+  //alert(regdata);
+  $.ajax({ 
+        type:'POST',
+        url:rootname() + 'handlers/staff_edit_handler.php',
+        data:regdata,
+        success:function(html){
+        $('#edit_submit').removeClass('fa-cog fa-spin');
+        $('#edit_submit').addClass('fa-save');
+        console.log(html);
 
+                $('#edit_response_stage').html(html);
+               // alert('Data updated Successfully!!');
+               // delay(5000,Location.reload());
+                //  alert('Data updated Successfully!!');
+             window.setTimeout(function(){location.reload(true)},3000);
+      //  $('#regstage').html(html);
+    
+          }
+
+    });  
+  });
+  
   
  }); 
 
@@ -271,5 +520,3 @@ $("#staffupload").submit(function(e){
    }
   
   });
-
-  

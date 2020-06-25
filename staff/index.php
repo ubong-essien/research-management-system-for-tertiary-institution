@@ -1,12 +1,13 @@
 <?php
 // this index page will have some menu for 1=upload,2=view all ,3=logout,4 = explore all research works
 include('../includes/staff_header.php');
+chksession();
 $email = $_SESSION['login_user_verified'];
 $login_staff = getnewstaff($email,$con);
 
 ?>
 <div class="features-boxed" >
-        <div class="container" style="margin-top:15px;background-color:#808080">
+        <div class="container" style="margin-top:15px;background-color:">
             <div class="intro"></div>
             <div class="row features" style="">
 			<?php 
@@ -51,13 +52,13 @@ $login_staff = getnewstaff($email,$con);
                                                 <td><?= $login_staff['Email'];?></td>
                                             </tr>
                                             <tr>
-                                                <td>Staff Number</td>
+                                                <td>Company Staff Number</td>
                                                 <td><?= $login_staff['StaffSchID'];?></td>
                                             </tr>
                                         </table>
 
                                     </div>
-                                    
+                                    <a class="btn btn-success" href="<?= home_base_url();?>staff/profile.php?user=<?=$login_staff['StaffID'];?>"><li class="fa fa-edit"></li> Edit Basic Profile</a>
                             </div>
                             <div class="col-md-8 col-sm-6 col-xs-12">
                             <p class="alert alert-primary">This shows a breakdown of research works by you</p>

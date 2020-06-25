@@ -15,7 +15,8 @@
             $rt = mysqli_real_escape_string($con,(trim($_POST['rt'])));	
             $abstract = mysqli_real_escape_string($con,(trim($_POST['abstract'])));	
             $pub_details = mysqli_real_escape_string($con,(trim($_POST['pub_details'])));	
-            $topic = mysqli_real_escape_string($con,(trim($_POST['topic'])));	
+            $topic = mysqli_real_escape_string($con,(trim($_POST['topic'])));
+            $s_dept = mysqli_real_escape_string($con,(trim($_POST['s_dept'])));	
             
            /*  echo $pc;
             echo $pt;
@@ -90,6 +91,7 @@
                   'user_id' =>$user_id,
                   'research_token' =>$token,
                   'pub_details' =>$pub_details,
+                  'staff_dept' =>$s_dept,
                   'file' =>$userpic
                   
                   );

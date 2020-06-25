@@ -1,6 +1,7 @@
 <?php
 include('../includes/staff_header.php');
 include('../includes/connect.php');
+chksession();
 $errors = array();
 ?>
 <div class="container" style="background-color:#;height:auto;margin-top:50px;font-family:arial narrow;font-size:18px;">

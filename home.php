@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xl-9 mx-auto">
-            <h1 class="mb-5" style="color:white;"><img src="img/logoban.png" alt='logo' />Welcome to AKSU Research Project Management System</h1>
+            <h1 class="mb-5" style="color:white;"><img src="img/logoban.png" alt='logo' />Welcome to XYZ Research Project Management System</h1>
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
            
@@ -17,8 +17,8 @@
     <!-- Icons Grid -->
     <section class="features-icons bg-light text-center">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
+        <div class="row" style="font-family:arial narrow">
+          <div class="card col-lg-3">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
                 <i class="icon-notebook m-auto text-primary"></i>
@@ -29,22 +29,72 @@
               <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="card col-lg-3">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
                 <i class="icon-graduation m-auto text-primary"></i>
               </div>
-              <h3>Masters(Thesis)</h3>
+              <h3>Masters </h3>
               <h2>1232</h2>
               <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="card col-lg-3">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
                 <i class="icon-check m-auto text-primary"></i>
               </div>
-              <h3>Doctorate(PhD thesis)</h3>
+              <h3>PhD thesis</h3>
+              <h2>1232</h2>
+              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            </div>
+          </div>
+          <div class="card col-lg-3">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3>Monograph</h3>
+              <h2>1232</h2>
+              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            </div>
+          </div>
+          <div class="card col-lg-3">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3>Refeered Journal</h3>
+              <h2>1232</h2>
+              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            </div>
+          </div>
+          <div class="card col-lg-3">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3>TextBooks</h3>
+              <h2>1232</h2>
+              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            </div>
+          </div>
+          <div class="card col-lg-3">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3>Conference Proceedings</h3>
+              <h2>1232</h2>
+              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            </div>
+          </div>
+          <div class="card col-lg-3">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3>Book Chapter</h3>
               <h2>1232</h2>
               <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
             </div>
@@ -61,7 +111,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xl-9 mx-auto">
-            <h2 class="mb-4">Why Use AKSU Research Project Management System</h2>
+            <h2 class="mb-4">Why Use XYZ Research Project Management System</h2>
              <a href="" class="btn btn-primary">Learn more</a>
           </div>
          

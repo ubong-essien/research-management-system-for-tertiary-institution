@@ -867,7 +867,15 @@ function getnewstaff($email,$conn){
 	
 	$st_arr=mysqli_fetch_array($get_q);
 					}
-		return $st_arr;
+	return $st_arr;
+}
+/////////////////////////decode staff from userid
+function get_staff_by_userid($userid,$conn){
+	if(isset($userid)){
+	$get_q=getAllRecord($conn,"staff_tb","StaffID = '$userid'","","");
+	$st_arr=mysqli_fetch_array($get_q);
+					}
+	return $st_arr;
 }
 //////////////////////////////
 function getsupervisor($id,$conn){
@@ -1202,6 +1210,33 @@ return;
 		return $yrcount;
 		
 	}
+	/*********************8staff count************* */
+
+	function staffsubbydpt($id,$conn){
+
+		$p=getAllRecord($conn,"staff_submission","staff_dept='$id'","","");
+		$deptcount=mysqli_num_rows($p);
+
+		$st_array=mysqli_fetch_array($p);
+		
+		return array($deptcount,$st_array);
+	}
+	/****************************************/
+	function staffcountbyyear($id,$conn){
+		$p=getAllRecord($conn,"submissions","Ses='$id'","","");
+		$yrcount=mysqli_num_rows($p);
+		
+		return $yrcount;
+		
+	}
+	function staffcountbysup($id,$conn){
+		$p=getAllRecord($conn,"submissions","SupervisorId='$id'","","");
+		$yrcount=mysqli_num_rows($p);
+		
+		return $yrcount;
+		
+	}
+/********************ends here*********** */
 	/******************************/
 	function load_settings($conn){
 		

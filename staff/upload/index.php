@@ -1,6 +1,7 @@
 <?php
 include('../../includes/staff_header.php');
 include('../../includes/connect.php');
+chksession();
 $email = $_SESSION['login_user_verified'];
 $login_staff = getnewstaff($email,$con);
 ?>
@@ -71,6 +72,7 @@ $login_staff = getnewstaff($email,$con);
                     <textarea type="text" class="form-control" name="pub_details" id="pub_details" required></textarea>
 					
                     <input type="hidden" id="staff" class="form-control" value="<?php echo $login_staff['StaffID'];?>" name="staff" />
+                    <input type="hidden" id="s_dept" class="form-control" value="<?php echo $login_staff['DeptIDs'];?>" name="s_dept" />
                </div>
                 <label >Select Your file* <em style="color:red">(only PDFs are allowed)</em></label><br/>
                 <input type="file" name="pdffile" class="form-control"  required /><br/>
