@@ -17,13 +17,17 @@
             $pub_details = mysqli_real_escape_string($con,(trim($_POST['pub_details'])));	
             $topic = mysqli_real_escape_string($con,(trim($_POST['topic'])));
             $s_dept = mysqli_real_escape_string($con,(trim($_POST['s_dept'])));	
+            $py = mysqli_real_escape_string($con,(trim($_POST['py'])));	
             
            /*  echo $pc;
             echo $pt;
             echo $rt;
             echo $abstract;
-            echo $pub_details; */
- //die();
+            echo $pub_details; 
+
+            */
+/*             var_dump($py);
+ die(); */
           $date=date('Y-m-d');
           //generate a token for appending to file name and for identification on a research work
           $token=getToken(10);
@@ -92,6 +96,7 @@
                   'research_token' =>$token,
                   'pub_details' =>$pub_details,
                   'staff_dept' =>$s_dept,
+                  'pub_year' =>$py,
                   'file' =>$userpic
                   
                   );

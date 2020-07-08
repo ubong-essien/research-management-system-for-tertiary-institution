@@ -5,7 +5,9 @@ chksession();
 $email = $_SESSION['login_user_verified'];
 $login_staff = getnewstaff($email,$con);
 ?>
+<span id="message-alert"></span>
 <div class="container" style="background-color:#;height:auto;margin-top:50px;font-family:arial narrow"> 
+
   <?php echo "<p style='color:blue;font-family:verdana;font-size:14px'>Welcome !".$_SESSION['login_user_verified']."</p>"?>
     <div class="row" style="margin-top:50px;margin-top:10px;">
 
@@ -49,6 +51,7 @@ $login_staff = getnewstaff($email,$con);
                     <div id="pub_cat" style="display:none">
                       <label class="input-group-addon">Publisher Category:</label>
                         <select name="pc" class="form-control" id="pc"  >
+                        <option value="" >-Please select-</option>
                             <?php
                             
                             $sel = mysqli_query($con,"SELECT * FROM publisher_cat");	
@@ -68,6 +71,27 @@ $login_staff = getnewstaff($email,$con);
 
                         </select>
                     </div>
+                 
+                      <label class="input-group-addon">Year Of Publication:</label>
+                        <select name="py" class="form-control" id="py"  >
+                        <option value="0000" >-Please select-</option>
+                            <?php
+                           $start = 2000;
+                            if($start){
+                            foreach(range(date('Y'),$start) as $x){
+                            
+                              ?>
+                              <option  value='<?php echo $x;?>'> <?php echo $x;?> </option>
+                              <?php
+                              }
+                          }
+                          else
+                          {echo"year selector error";
+                          }
+                            ?>                  
+
+                        </select>
+                   
                     <label  class="input-group-addon">Publishing details:<em style="color:red">(<b>Format:</b> Name of Journal or publisher,ISSN or ISBN,Volume Number,Month-Year)</em></label>
                     <textarea type="text" class="form-control" name="pub_details" id="pub_details" required></textarea>
 					

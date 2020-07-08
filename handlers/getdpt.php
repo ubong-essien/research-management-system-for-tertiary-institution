@@ -1,8 +1,8 @@
 <?php
 sleep(2);
 //error_reporting(0);
-include('../includes/connect.php');
-include('../includes/function.php');					
+include('../../includes/connect.php');
+include('../../includes/function.php');					
 					
 								$rowsperpage=5;
 			//$_SESSION['search_key']="";
@@ -22,7 +22,7 @@ include('../includes/function.php');
 						
 			}
 						
-					$fq=getAllRecord($con,"submissions","DeptID='$dpt'","Date_Submitted DESC","");
+					$fq=getAllRecord($con,"submissions","DeptID='$dpt'","date_uploaded DESC","");
 					//var_dump($r);
 					$records=mysqli_num_rows($fq);
 					
@@ -30,7 +30,7 @@ include('../includes/function.php');
 						$offset=$offsetarray[0];
 						$totalpages=$offsetarray[1];
 					//echo "offset".$offset;
-					$r=getAllRecord($con,"submissions","DeptID='$dpt'","Date_Submitted DESC","$offset,$rowsperpage");
+					$r=getAllRecord($con,"submissions","DeptID='$dpt'","date_uploaded DESC","$offset,$rowsperpage");
 					
 					echo "<h6 style='padding:5px'>Number of records: ".$records."</h6>";
 ?>
@@ -44,21 +44,21 @@ include('../includes/function.php');
 					
 						
 								<?php
-								echo "<h6 style='color:blue;text-transform:uppercase;font-family:times new romans'><a href='#submission{$row['id']}' data-toggle='modal' title='Click to view description' data-target='#submission{$row['id']}'>".$row['Submission_Title']."</a></h6>";
-								echo "<p style='text-align:justify;font-family:san-serif;padding:10px;'>".word_teaser($row['descr'],40)."...</p>";
-								echo "<a href='../research_files/{$row['File']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li></a>  <a href='download.php?link={$row['File']}&source=1' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['id']}' data-toggle='modal' data-target='#profile{$row['id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a><span style='margin-left:78%;font-family:san-serif;font-size:12px;color:#003300;'>Downloads: {$row['downloads']}</span>"
+								echo "<h6 style='color:blue;text-transform:uppercase;font-family:times new romans'><a href='#submission{$row['id']}' data-toggle='modal' title='Click to view description' data-target='#submission{$row['id']}'>".$row['topic']."</a></h6>";
+								echo "<p style='text-align:justify;font-family:san-serif;padding:10px;'>".word_teaser($row['abstract'],40)."...</p>";
+								echo "<a href='".home_base_url()."research_files/staff_research/{$row['file']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li></a>  <a href='".home_base_url()."main/download.php?link={$row['file']}&source=3' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['user_id']}' data-toggle='modal' data-target='#profile{$row['user_id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a><span style='margin-left:78%;font-family:san-serif;font-size:12px;color:#003300;'>Downloads: {$row['download']}</span>"
 						
 								?>
 								<hr/>
 							</div>
-					<div id="submission<?php echo $row['id'];?>" class="modal fade" role="dialog">
+							<div id="submission<?php echo $row['id'];?>" class="modal fade" role="dialog">
 					  <div class="modal-dialog modal-lg">
 
 						<!-- Modal content-->
 						<div class="modal-content">
 						  <div class="modal-header">
 							
-							<h5 class="modal-title"><?php echo $row['Submission_Title'];?></h5>
+							<h4 class="modal-title"><?php echo $row['Submission_Title'];?></h4>
 						  </div>
 						  <div class="modal-body">
 							<p><?php echo $row['descr'];?></p>
@@ -71,6 +71,7 @@ include('../includes/function.php');
 					  </div>
 					</div>
 					<!----------------------------->
+					<!-------------------modal fo authors profile--------------------------->
 					<div id="profile<?php echo $row['id'];?>" class="modal fade" role="dialog">
 					  <div class="modal-dialog modal-md">
 						<?php
@@ -84,7 +85,7 @@ include('../includes/function.php');
 							<h4 class="modal-title">Authors Profile</h4>
 						  </div>
 						  <div class="modal-body">
-							<img src="<?php echo home_base_url();?>img/ph.jpg" alt="" class="rounded-circle" style="margin-left:100px"/>
+							<img src="<?php echo home_base_url();?>img/ph.jpg" class="rounded-circle" alt="" style="margin-left:100px"/>
 							<table class="table table-bordered">
 							<tr><td>Name</td><td><?php echo $author['SurName'].", ".$author['FirstName']." ".$author['OtherNames'];?></td></tr>
 							<tr><td>Reg Number</td><td><?php echo $row['RegNo'];?></td></tr>

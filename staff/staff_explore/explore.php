@@ -1,6 +1,8 @@
 <?php  
+chksession();
 $email = $_SESSION['login_user_verified'];
 $d = getnewstaff($email,$con);
+
 ?>
     <!-- Masthead -->
     <header class="masthead text-white text-center" style=" background: url('<?php echo home_base_url();?>img/bgo.jpg') no-repeat center;">
@@ -23,7 +25,7 @@ $d = getnewstaff($email,$con);
         <div class="col-md-3 col-sm-3 col-xs-12" > 
 		<h6 style="color:red;text-align:center;padding:30px;">View By Department</h6>
           <!-- ################################################################################################ -->
-          <ul style="list-style-type:none;height:500px;overflow-y:scroll;font-family:san-serif">
+          <ul style="list-style-type:none;height:300px;overflow-y:scroll;font-family:san-serif">
 		  <?php
 		include('../../includes/connect.php');
 		$sel2 = mysqli_query($con,"SELECT * FROM programme_tb ORDER BY ProgName ASC");	
@@ -34,7 +36,7 @@ $d = getnewstaff($email,$con);
 						
 
 ?>  
-            <li  class="list-group-item"><a onclick="staff_send('<?php echo $id;?>')" href="javascript:void(0)"><?php echo $dept_name;?></a><span class="badge" style="color:red;padding-left:10px;"><?php  $v = staffsubbydpt($id,$con); echo $v[0];?></span></li>
+            <li  class="list-group-item"><a onclick="staff_dept_send('<?php echo $id;?>')" href="javascript:void(0)"><?php echo $dept_name;?></a><span class="badge" style="color:red;padding-left:10px;"><?php  $v = staffsubbydpt($id,$con); echo $v[0];?></span></li>
 			<?php
 					}
 				}else{echo"error displaying pages";}
@@ -42,11 +44,11 @@ $d = getnewstaff($email,$con);
           </ul>
           <!-- ################################################################################################ --> 
 		  
-		  		  <h6 style="color:red;text-align:center;padding:10px;">View By Staff</h6>
+		  		  <h6 style="color:red;text-align:center;padding:10px;">View By Researcher</h6>
           <!-- ################################################################################################ -->
           <ul style="list-style-type:none;height:300px;overflow-y:scroll;font-family:san-serif">
 		  <?php
-		$sel2 = mysqli_query($con,"SELECT * FROM staff_tb");	
+		$sel2 = mysqli_query($con,"SELECT * FROM staff_tb ORDER BY StaffName");	
 					if($sel2){
 					while($row=mysqli_fetch_array($sel2)){;
 						$supid=$row['StaffID'];
@@ -54,7 +56,30 @@ $d = getnewstaff($email,$con);
 						
 
 ?>  
-            <li class="list-group-item"><a onclick="sendsup('<?php echo $supid;?>')" href="javascript:void(0)"><?php echo $Supervisor_name;?></a><span class="badge" style="color:red;padding-left:10px;"><?php echo countbysup($supid,$con);?></span></li>
+            <li class="list-group-item"><a onclick="staffsendsupervisor('<?php echo $supid;?>')" href="javascript:void(0)"><?php echo $Supervisor_name;?></a><span class="badge" style="color:red;padding-left:10px;"><?php echo countbysup($supid,$con);?></span></li>
+			<?php
+					}
+				}else{echo"error displaying pages";}
+			?>
+          </ul>
+		  <h6 style="color:red;text-align:center;padding:10px;">View by Year of Publication</h6>
+          <!-- ################################################################################################ -->
+          <ul style="list-style-type:none;height:300px;overflow-y:scroll;font-family:san-serif">
+		  <?php
+		$sel2 = mysqli_query($con,"SELECT DISTINCT pub_year FROM staff_submission WHERE pub_year != '' ORDER BY pub_year");	
+					if($sel2){
+					while($row=mysqli_fetch_array($sel2)){;
+						
+						$pub_year=$row['pub_year'];
+
+						if($pub_year == ""){
+							$pub_yr = "0000";
+						}else{
+							$pub_yr = $pub_year;
+						}
+
+?>  
+            <li class="list-group-item"><a onclick="staffsendyr('<?php echo $pub_yr;?>')" href="javascript:void(0)"><?php echo $pub_yr;?></a><span class="badge" style="color:red;padding-left:10px;"><?php echo staffcountbyyear($pub_year,$con);?></span></li>
 			<?php
 					}
 				}else{echo"error displaying pages";}
@@ -95,7 +120,7 @@ $d = getnewstaff($email,$con);
 		 <br/>
 		 <br/>
 		 
-			 <div class="col-md-12 col-lg-12" id="stage" style="background-color:#ffffff;border-radius:5px;">
+			 <div class="col-md-12 col-lg-12" id="staffstage" style="background-color:#ffffff;border-radius:5px;">
 			 
 			 </div>
 		 </div>
@@ -109,8 +134,4 @@ $d = getnewstaff($email,$con);
         
     
 </div>
-    
 
-
-
-   

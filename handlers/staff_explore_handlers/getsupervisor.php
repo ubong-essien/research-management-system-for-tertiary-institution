@@ -1,9 +1,10 @@
 <?php
-sleep(2);
-//error_reporting(0);
-include('../includes/connect.php');
-include('../includes/function.php');
+//sleep(2);
 
+//error_reporting(0);
+include('../../includes/connect.php');
+include('../../includes/function.php');
+global $sup;
 	$rowsperpage=5;
 			//$_SESSION['search_key']="";
 			
@@ -22,7 +23,7 @@ include('../includes/function.php');
 						
 			}
 						
-					$fq=getAllRecord($con,"submissions","SupervisorId='$sup'","Date_Submitted DESC","");
+					$fq=getAllRecord($con,"staff_submission","user_id='$sup'","date_uploaded DESC","");
 					//var_dump($r);
 					$records=mysqli_num_rows($fq);
 					
@@ -30,13 +31,13 @@ include('../includes/function.php');
 						$offset=$offsetarray[0];
 						$totalpages=$offsetarray[1];
 					//echo "offset".$offset;
-					$r=getAllRecord($con,"submissions","SupervisorId='$sup'","Date_Submitted DESC","$offset,$rowsperpage");
+					$r=getAllRecord($con,"staff_submission","user_id='$sup'","date_uploaded DESC","$offset,$rowsperpage");
 					
 					echo "<h6>Number of records: ".$records."</h6>";
 ?>
 <br/><br/>
-			<div class="row">
-						<?php
+<div class="row">
+			<?php
 								if($records!=0):
 								while($row=mysqli_fetch_assoc($r)):
 								?>
@@ -44,9 +45,9 @@ include('../includes/function.php');
 					
 						
 								<?php
-								echo "<h6 style='color:blue;text-transform:uppercase;font-family:times new romans'><a href='#submission{$row['id']}' title='Click to view decription' data-toggle='modal' data-target='#submission{$row['id']}'>".$row['Submission_Title']."</a></h6>";
-								echo "<p style='text-align:justify;font-family:san-serif'>".word_teaser($row['descr'],56)."...</p>";
-								echo "<a href='../research_files/{$row['File']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li> </a>  <a href='download.php?link={$row['File']}&source=1' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['id']}' data-toggle='modal' data-target='#profile{$row['id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a>"
+								echo "<h6 style='color:blue;text-transform:uppercase;font-family:times new romans'><a href='#submission{$row['id']}' title='Click to view decription' data-toggle='modal' data-target='#submission{$row['id']}'>".$row['topic']."</a></h6>";
+								echo "<p style='text-align:justify;font-family:san-serif'>".word_teaser($row['abstract'],56)."...</p>";
+								echo "<a href='../../research_files/staff_research/{$row['file']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li> </a>  <a href='download.php?link={$row['file']}&source=1' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['id']}' data-toggle='modal' data-target='#profile{$row['id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a>"
 						
 								?>
 								<hr/>
@@ -58,10 +59,10 @@ include('../includes/function.php');
 						<div class="modal-content">
 						  <div class="modal-header">
 							
-							<h4 class="modal-title"><?php echo $row['Submission_Title'];?></h4>
+							<h4 class="modal-title"><?php echo $row['topic'];?></h4>
 						  </div>
 						  <div class="modal-body">
-							<p><?php echo $row['descr'];?></p>
+							<p><?php echo $row['abstract'];?></p>
 						  </div>
 						  <div class="modal-footer">
 							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -74,8 +75,12 @@ include('../includes/function.php');
 					<div id="profile<?php echo $row['id'];?>" class="modal fade" role="dialog">
 					  <div class="modal-dialog modal-md">
 						<?php
-						$author=getdatabyreg($row['RegNo'],$con)
-						
+						$authorsres=get_all_pub_for_user($_SESSION['search_sup'],$con);
+						$author = $authorsres[0];
+						$author_count = $authorsres[1];
+						//var_dump($author);
+						$auth = get_staff_by_userid($_SESSION['search_sup'],$con);
+					
 						?>
 						<!-- Modal content-->
 						<div class="modal-content">
@@ -86,12 +91,12 @@ include('../includes/function.php');
 						  <div class="modal-body">
 							<img src="<?php echo home_base_url();?>img/ph.jpg" alt="" style="margin-left:100px"/>
 							<table class="table table-bordered">
-							<tr><td>Name</td><td><?php echo $author['SurName'].", ".$author['FirstName']." ".$author['OtherNames'];?></td></tr>
-							<tr><td>Reg Number</td><td><?php echo $row['RegNo'];?></td></tr>
-							<tr><td>Department</td><td><?php echo GetProgDetails($row['DeptID'],$con);?></td></tr>
-							<tr><td>Email</td><td><?php echo $author['Email'];?></td></tr>
-							<tr><td>Phone</td><td><?php echo $author['Phone'];?></td></tr>
-							<tr><td>Supervisor</td><td><?php echo getsupervisor($row['SupervisorId'],$con);?></td></tr>
+							<tr><td>Name</td><td><?php echo $auth['StaffName'];?></td></tr>
+							<tr><td>Staff Number</td><td><?php echo $auth['StaffSchID'];?></td></tr>
+							<tr><td>Department</td><td><?php echo GetProgDetails($auth['DeptIDs'],$con);?></td></tr>
+							<tr><td>Email</td><td><?php echo $auth['Email'];?></td></tr>
+							<tr><td>Phone</td><td><?php echo $auth['Phone'];?></td></tr>
+							<tr><td>Supervisor</td><td><?php echo $author_count;?></td></tr>
 							
 							</table>
 						  </div>
@@ -109,9 +114,10 @@ include('../includes/function.php');
 						echo "<h5>No records available to display.</h5><br/>";
 						endif;
 						?>
+
 					<ul class="pagination">
 							<?php
-							echo paginatesup($getcurrentpage,$totalpages,$_SESSION['search_sup']);
+							echo staffpaginatesup($getcurrentpage,$totalpages,$_SESSION['search_sup']);
 							?>
 					</ul>
 					

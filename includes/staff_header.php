@@ -30,7 +30,10 @@ $setting['layout'];
     <link rel="stylesheet" href="<?php echo home_base_url();?>css/added.css" />
     <!-- Custom styles for this template -->
     <link href="<?php echo home_base_url();?>css/landing-page.min.css" rel="stylesheet">
-    
+    <script src="<?php echo home_base_url();?>vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo home_base_url();?>assets/js/pagination.js"></script>
+    <script src="<?php echo home_base_url();?>assets/js/app.js"></script>
+
 <style type="text/css">
 
 .inv-proGresBar{width:900px!important;height:5px;}
@@ -88,7 +91,7 @@ $setting['layout'];
   endif;
     ?> 
 	
-		<a  href="<?php echo home_base_url();?>main/index.php" class="btn btn-success btn-sm"> <li class="fa fa-search"></li> Search</a>
+		<a  href="<?php echo home_base_url();?>staff/staff_explore/index.php" class="btn btn-success btn-sm"> <li class="fa fa-search"></li> Search</a>
 	<?php	if(isset($_SESSION['login_user_verified'])):
       echo" <a  href='".home_base_url()."logout.php' class='btn btn-danger btn-sm'> <li class='fa fa-power-off'></li> logout</a>";
   endif;

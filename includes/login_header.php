@@ -24,6 +24,9 @@ include('function.php');
 
     <!-- Custom styles for this template -->
     <link href="<?php echo home_base_url();?>css/landing-page.min.css" rel="stylesheet">
+    <script src="<?php echo home_base_url();?>vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo home_base_url();?>assets/js/pagination.js"></script>
+    <script src="<?php echo home_base_url();?>assets/js/app.js"></script>
 
   </head>
 

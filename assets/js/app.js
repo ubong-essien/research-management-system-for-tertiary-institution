@@ -3,228 +3,236 @@
 /********************staff 
           * javascript 
           * script
- ************************* */
+ *************This js file cordinates the staff module mostly************ */
+function message_alert(color,message){
 
-$(document).ready(function(){
+	var html = "<div id='alerting' class='w3-animate-zoom' style='display:block;width:20%;height:5%;background-color:" + color + ";border-radius:5px;margin-left:40%;position:absolute;z-index:1;top:2;text-align:center;padding-top:10px;opacity:0.7;color:#fff' >" + message + "</div>";
 	
-		 $('#search').submit(function(e){
-			 
-			 $('#progbar').show();
-			 var srch = $('#srch').val();
-			 if(!(srch=="")){
-				 
-		//alert("yeeeea")
-		 e.preventDefault();
-		var regdata=$(this).serialize();
-		
-		//alert(regdata);
-		     $.ajax({ 
-                type:'POST',
-				url:'../../handlers/staff_explore_handlers/keyword_handler.php',
-                data:regdata,
-				success:function(data){
-					$('#progbar').hide();
-					$('#stage').html(data);
-					
-									}
-				
-					});  
-				}else{
-					$('#progbar').hide();
-					$('#emtpymsg').html("<p style='color:red'>Please specify a search criteria</p>");
-					return false;
-				}
-        });
-		
+	return html;
+	}
+
+//$(window).load(function(){
+  function showloader(){
+    $('#progbar').show();
+    return;
+   }
    
+   function hideloader(){
+    
+    $('#progbar').hide();
+    return;
+   } 
 
-function showloader(){
-		$('#progbar').show();
-		return;
+$('#search').submit(function(e){
+  
+  $('#progbar').show();
+  var srch = $('#srch').val();
+  if(!(srch=="")){
+    
+ //alert("yeeeea")8
+e.preventDefault();
+ var regdata=$(this).serialize();
+ 
+ //alert(regdata);
+  $.ajax({ 
+     type:'POST',
+     url:'../../handlers/staff_explore_handlers/keyword_handler.php',
+     data:regdata,
+     success:function(data){
+       $('#progbar').hide();
+   /* 
+       $('#staffstage').pagination({
+        dataSource:data,
+        callback: function(data, pagination) {
+            // template method of yourself
+            var html = template(data);
+            $('#staffstage').html(data);
+            //dataContainer.html(data);
+        }
+    }) */
+       $('#staffstage').html(data);
+       
+               }
+     
+       });  
+     }else{
+       $('#progbar').hide();
+       $('#emtpymsg').html("<p style='color:red'>Please specify a search criteria</p>");
+       return false;
+     }
+ });
+ 
+
+
+
+/*****************dept select ajax call******************* */
+staff_dept_send = function(id){
+//alert(id);
+$('#progbar').show();
+
+var dptid=id;
+$.ajax({ 
+         type:'POST',
+         url:'../../handlers/staff_explore_handlers/getdpt.php',
+         data:{Dept:dptid},
+         success:function(html){
+       //alert(html);
+       // $('#stage').hide();
+       $('#progbar').hide();
+      $('#staffstage').html(html);
+       
+               }
+     
+   }); 
+return;
 }
 
-function hideloader(){
-		
-		$('#progbar').hide();
-		return;
-} 
+/***************pagination onclick event function for depat search***************************/
+function staffpaginatedpt(page){
+  //alert('giufioghu');
+  $('#progbar').show();
+  var p=page;
+  
+  $.ajax({ 
+       type:'POST',
+       url:'../../handlers/staff_explore_handlers/getdpt.php',
+       data:{currentpage:page},
+       success:function(html){
+         //alert(html);
+         // $('#stage').hide();
+         $('#progbar').hide();
+        $('#staffstage').html(html);
+         
+                 }
+       
+     });  
+  
+  return;
+  
+  }
 
-staff_send = function(id){
-	//alert("call loader");
-	$('#progbar').show();
-	
-	var dptid=id;
-	$.ajax({ 
-                type:'POST',
-			        	url:'../../handlers/staff_explore_handlers/getdpt.php',
-                data:{Dept:dptid},
-				        success:function(html){
-					//alert(html);
-					// $('#stage').hide();
-					$('#progbar').hide();
-					 $('#stage').html(html);
-					
-									}
-				
-            }); 
-	return;
-}
-/**********************************/
-sendyr = function(id){
-	$('#progbar').show();
-	
-	var yrid=id;
-	$.ajax({ 
-                type:'POST',
-				url:'../../handlers/staff_explore_handlers/getyear.php',
-                data:{Yr:yrid},
-				success:function(html){
-					//alert(html);
-					// $('#stage').hide();
-					$('#progbar').hide();
-					 $('#stage').html(html);
-					
-									}
-				
-            }); 
-	
-	
-	return;
+/**************this gets all work for a staff*****************/
+staffsendsupervisor = function(id){
+  //alert(id);
+$('#progbar').show();
+
+var sup=id;
+
+$.ajax({ 
+     type:'POST',
+         url:'../../handlers/staff_explore_handlers/getsupervisor.php',
+     data:{sup_id:sup},
+         success:function(html){
+       //alert(html);
+       // $('#stage').hide();
+     $('#progbar').hide();
+     $('#staffstage').html(html);
+       
+               }
+     
+   }); 
+
+
+return;
 }
 /*******************************/
-sendsup = function(id){
-	$('#progbar').show();
-	
-	var sup=id;
-	$.ajax({ 
-                type:'POST',
-				url:'../../handlers/staff_explore_handlers/getsupervisor.php',
-                data:{sup_id:sup},
-				success:function(html){
-					//alert(html);
-					// $('#stage').hide();
-					$('#progbar').hide();
-					 $('#stage').html(html);
-					
-									}
-				
-            }); 
-	
-	
-	return;
-}
-/*******************************/
+/***************this is a function in the onclikc event of a pagination**************************/
+function staffgetsup(page){
+  //alert(page);
+ // return;
+  $('#progbar').show();
+  var page = page;
 
+  $.ajax({ 
+             type:'POST',
+             url:'../../handlers/staff_explore_handlers/getsupervisor.php',
+             data:{currentpage:page},
+            success:function(html){
+         //alert(html);
+         // $('#stage').hide();
+            $('#progbar').hide();
+            $('#staffstage').html(html);
+                 }
+     });  
+  
+ // return;
+  
+  }
+
+/**************key word pagination link onclick event function*************** */
 function paginate(page){
-	$('#progbar').show();
-	var p=page;
-	//alert(p);
-	/* var f=<?php echo $_SESSION['search_key'];?>
-	alert(f); */
-	//$('#srch').val();
-	
-	 
-	$.ajax({ 
-                type:'POST',
-				url:'../../handlers/staff_explore_handlers/keyword_handler.php',
-                data:{currentpage:page},
-				success:function(html){
-					//alert(html);
-					// $('#stage').hide();
-					$('#progbar').hide();
-					 $('#stage').html(html);
-					
-									}
-				
-            });  
-	
-	return;
-	
-}
-/******************************************/
-function paginatedpt(page){
-	$('#progbar').show();
-	var p=page;
-	//alert(p);
-	/* var f=<?php echo $_SESSION['search_key'];?>
-	alert(f); */
-	//$('#srch').val();
-	
-	 
-	$.ajax({ 
-                type:'POST',
-				url:'../../handlers/staff_explore_handlers/getdpt.php',
-                data:{currentpage:page},
-				success:function(html){
-					//alert(html);
-					// $('#stage').hide();
-					$('#progbar').hide();
-					 $('#stage').html(html);
-					
-									}
-				
-            });  
-	
-	return;
-	
-}
-/*****************************************/
-function getsup(page){
-	$('#progbar').show();
-	var p=page;
-	//alert(p);
-	/* var f=<?php echo $_SESSION['search_key'];?>
-	alert(f); */
-	//$('#srch').val();
-	
-	 
-	$.ajax({ 
-                type:'POST',
-				url:'../../handlers/staff_explore_handlers/getsupervisor.php',
-                data:{currentpage:page},
-				success:function(html){
-					//alert(html);
-					// $('#stage').hide();
-					$('#progbar').hide();
-					 $('#stage').html(html);
-					
-									}
-				
-            });  
-	
-	return;
-	
+$('#progbar').show();
+var p=page;
+
+$.ajax({ 
+     type:'POST',
+     url:'../../handlers/staff_explore_handlers/keyword_handler.php',
+     data:{currentpage:page},
+     success:function(html){
+       //alert(html);
+       // $('#stage').hide();
+       $('#progbar').hide();
+      $('#stage').html(html);
+       
+               }
+     
+   });  
+
+return;
+
 }
 
-/*****************************************/
+
+/***************oonclick function in year in staff section if the explore*******************/
+staffsendyr = function(id){
+$('#progbar').show();
+//alert(id);
+
+var yrid=id;
+$.ajax({ 
+     type:'POST',
+     url:'../../handlers/staff_explore_handlers/staffgetyear.php',
+     data:{Yr:yrid},
+     success:function(html){
+       //alert(html);
+       // $('#stage').hide();
+       $('#progbar').hide();
+      $('#staffstage').html(html);
+       
+               }
+   }); 
+return;
+}
+/*****************in the pagination link for ajax rsponse of year************************/
 function paginateyr(page){
-	$('#progbar').show();
-	var p=page;
-	//alert(p);
-	/* var f=<?php echo $_SESSION['search_key'];?>
-	alert(f); */
-	//$('#srch').val();
-	
-	 
-	$.ajax({ 
-                type:'POST',
-				url:'../../handlers/staff_explore_handlers/getyear.php',
-                data:{currentpage:page},
-				success:function(html){
-					//alert(html);
-					// $('#stage').hide();
-					$('#progbar').hide();
-					 $('#stage').html(html);
-					
-									}
-				
-            });  
-	
-	return;
-	
+$('#progbar').show();
+var p=page;
+//alert(p);
+/* var f=<?php echo $_SESSION['search_key'];?>
+alert(f); */
+//$('#srch').val();
+
+
+$.ajax({ 
+     type:'POST',
+     url:'../../handlers/staff_explore_handlers/staffgetyear.php',
+     data:{currentpage:page},
+     success:function(html){
+       //alert(html);
+       // $('#stage').hide();
+       $('#progbar').hide();
+      $('#staffstage').html(html);
+       
+               }
+     
+   });  
+
+return;
+
 }
 
-}); 
+//}); 
+
 
 
 
@@ -434,6 +442,7 @@ $("#staffupload").submit(function(e){
      var pub_details =  $('#pub_details').val();
      var staff =  $('#staff').val();
      var topic =  $('#topic').val();
+     var py =  $('#py').val();
 
      formData.append('pt',pt); 
      formData.append('topic',topic); 
@@ -442,10 +451,11 @@ $("#staffupload").submit(function(e){
      formData.append('pc',pc); 
      formData.append('pub_details',pub_details); 
      formData.append('staff',staff); 
+     formData.append('py',py); 
      
    // var rec_data =$('#staffupload').serialize();
     
-    alert(formData);
+    //alert(formData);
     //return;
     //formData.append('form_data',rec_data);
    // alert(formData);
@@ -463,9 +473,14 @@ $("#staffupload").submit(function(e){
       {
         console.log(html);
         removeloader();
-      $('#message').html(html);
-      alert('Data Saved Successfully!!');
-      location.reload().delay(2000);
+        $('#message-alert').focus();
+        $('#message-alert').html(message_alert('green',"Record Saved Successfully !"));
+					setTimeout(() => {$('#alerting').hide()
+						
+          }, 2000);
+          
+    
+      //location.reload().delay(2000);
      /*  $('staffupload').fadeOut(800,function(){
         $('staffupload').html(html).fadeIn().delay(2000);
       }); */

@@ -1035,9 +1035,9 @@ if ($currentpage != $totalpages) {
    $nextpage = $currentpage + 1;
    $prevpage = $currentpage - 1;
     // echo forward link for next page 
-   echo " <li><a class='btn btn-primary btn-sm' onclick='paginate($nextpage);' href='javascript:void(0)'>Next </a></li> ";
+   echo " <li><a class='btn btn-primary btn-sm' onclick='staffpaginatedpt($nextpage);' href='javascript:void(0)'>Next </a></li> ";
    // echo forward link for lastpage
-echo " <li><a class='btn btn-primary btn-sm' onclick='paginate($prevpage);' href='javascript:void(0)'>Last </a></li> ";
+echo " <li><a class='btn btn-primary btn-sm' onclick='staffpaginatedpt($prevpage);' href='javascript:void(0)'>Last </a></li> ";
 } // end if
 /****** end build pagination links ******/
 return;
@@ -1052,11 +1052,11 @@ $range = 2;
 // if not on page 1, don't show back links
 if ($currentpage > 1) {
    // show << link to go back to page 1
-echo " <li><a class='btn btn-primary btn-sm' onclick='paginatedpt(1);' href='javascript:void(0)'>First</a></li> ";
+echo " <li><a class='btn btn-primary btn-sm' onclick='staffpaginatedpt(1);' href='javascript:void(0)'>First</a></li> ";
    // get previous page num
    $prevpage = $currentpage - 1;
    // show < link to go back to 1 page
-   echo " <li><a class='btn btn-primary btn-sm' onclick='paginatedpt($prevpage);' href='javascript:void(0)'>Previous</a></li> ";
+   echo " <li><a class='btn btn-primary btn-sm' onclick='staffpaginatedpt($prevpage);' href='javascript:void(0)'>Previous</a></li> ";
 } // end if 
 //echo "<br/>".$currentpage."==".$range."==".(($currentpage + $range) + 1)."==>".($currentpage - $range);
 // loop to show links to range of pages around current page
@@ -1072,7 +1072,7 @@ echo " <li><a class='btn btn-primary btn-sm' onclick='paginatedpt(1);' href='jav
       } else {
 		 // echo $x;
          // make it a link
-         echo " <li><a class='btn btn-primary btn-sm' onclick='paginatedpt($x);' href='javascript:void(0)'>$x</a></li> ";
+         echo " <li><a class='btn btn-primary btn-sm' onclick='staffpaginatedpt($x);' href='javascript:void(0)'>$x</a></li> ";
       } // end else
    } // end if 
 } // end for 
@@ -1083,9 +1083,9 @@ if ($currentpage != $totalpages) {
    $nextpage = $currentpage + 1;
    $prevpage = $currentpage - 1;
     // echo forward link for next page 
-   echo " <li><a class='btn btn-primary btn-sm' onclick='paginatedpt($nextpage);' href='javascript:void(0)'>Next </a></li> ";
+   echo " <li><a class='btn btn-primary btn-sm' onclick='staffpaginatedpt($nextpage);' href='javascript:void(0)'>Next </a></li> ";
    // echo forward link for lastpage
-echo " <li><a class='btn btn-primary btn-sm' onclick='paginatedpt($prevpage);' href='javascript:void(0)'>Last </a></li> ";
+echo " <li><a class='btn btn-primary btn-sm' onclick='staffpaginatedpt($prevpage);' href='javascript:void(0)'>Last </a></li> ";
 } // end if
 /****** end build pagination links ******/
 return;
@@ -1179,15 +1179,63 @@ if ($currentpage != $totalpages) {
    // get next page
    $nextpage = $currentpage + 1;
    $prevpage = $currentpage - 1;
-    // echo forward link for next page 
-   echo " <li><a class='btn btn-primary btn-sm' onclick='getsup($nextpage);' href='javascript:void(0)'>Next </a></li> ";
+    // echo forward link for next ; page 
+   echo ' <li><a class="btn btn-primary btn-sm" onclick="getsup('.$nextpage.')" href="javascript:void(0)">Next </a></li> ';
    // echo forward link for lastpage
-echo " <li><a class='btn btn-primary btn-sm' onclick='getsup($prevpage);' href='javascript:void(0)'>Last </a></li> ";
+echo ' <li><a class="btn btn-primary btn-sm" onclick="getsup('.$prevpage.');" href="javascript:void(0)">Last </a></li> ';
 } // end if
 /****** end build pagination links ******/
 return;
 	}	
 	/****************************************/
+	function staffpaginatesup($currentpage,$totalpages,$srch_ky){
+		//$srch_ky=$_SESSION['search_sup'];
+	/******  build the pagination links ******/
+	// range of num links to show
+	$range = 2;
+	
+	// if not on page 1, don't show back links
+	if ($currentpage > 1) {
+	   // show << link to go back to page 1
+	echo " <li><a class='btn btn-primary btn-sm' onclick='staffgetsup(1);' href='javascript:void(0)'>First</a></li> ";
+	   // get previous page num
+	   $prevpage = $currentpage - 1;
+	   // show < link to go back to 1 page
+	   echo " <li><a class='btn btn-primary btn-sm' onclick='staffgetsup($prevpage);' href='javascript:void(0)'>Previous</a></li> ";
+	} // end if 
+	//echo "<br/>".$currentpage."==".$range."==".(($currentpage + $range) + 1)."==>".($currentpage - $range);
+	// loop to show links to range of pages around current page
+	 for ($x = 1; $x < (($currentpage + 1) + 1); $x++) {
+	   // if it's a valid page number...
+	   if (($x > 0) && ($x <= $totalpages)) {
+		  // if we're on current page...
+		  if ($x == $currentpage) {
+			  
+			 // 'highlight' it but don't make a link
+			// echo " [<b>$x</b>] ";
+		  // if not current page...
+		  } else {
+			 // echo $x;
+			 // make it a link
+			 echo " <li><a class='btn btn-primary btn-sm' onclick='staffgetsup($x);' href='javascript:void(0)'>$x</a></li> ";
+		  } // end else
+	   } // end if 
+	} // end for 
+					 
+	// if not on last page, show forward and last page links        
+	if ($currentpage != $totalpages) {
+	   // get next page
+	   $nextpage = $currentpage + 1;
+	   $prevpage = $currentpage - 1;
+		// echo forward link for next ; page 
+	   echo ' <li><a class="btn btn-primary btn-sm" onclick="staffgetsup('.$nextpage.')" href="javascript:void(0)">Next </a></li> ';
+	   // echo forward link for lastpage
+	echo ' <li><a class="btn btn-primary btn-sm" onclick="staffgetsup('.$prevpage.');" href="javascript:void(0)">Last </a></li> ';
+	} // end if
+	/****** end build pagination links ******/
+	return;
+		}	
+		/****************************************/
 	function countbydpt($id,$conn){
 		
 		$p=getAllRecord($conn,"submissions","DeptID='$id'","","");
@@ -1210,7 +1258,7 @@ return;
 		return $yrcount;
 		
 	}
-	/*********************8staff count************* */
+	/*********************staff count************* */
 
 	function staffsubbydpt($id,$conn){
 
@@ -1223,20 +1271,20 @@ return;
 	}
 	/****************************************/
 	function staffcountbyyear($id,$conn){
-		$p=getAllRecord($conn,"submissions","Ses='$id'","","");
+		$p=getAllRecord($conn,"staff_submission","pub_year='$id'","","");
 		$yrcount=mysqli_num_rows($p);
 		
 		return $yrcount;
 		
 	}
 	function staffcountbysup($id,$conn){
-		$p=getAllRecord($conn,"submissions","SupervisorId='$id'","","");
+		$p=getAllRecord($conn,"staff_submission","user_id='$id'","","");
 		$yrcount=mysqli_num_rows($p);
 		
 		return $yrcount;
 		
 	}
-/********************ends here*********** */
+/********************staff count ends here*********** */
 	/******************************/
 	function load_settings($conn){
 		
@@ -1311,6 +1359,18 @@ function get_all_pub_for_user($uid,$conn){
 					}
 		
 }
+function get_all_pub_for_yr($uid,$conn){
+	if(isset($uid)){
+
+	$get_q=getAllRecord($conn,"staff_submission"," pub_year='$uid'","date_uploaded ASC","");
+	
+	$st_arr=mysqli_fetch_assoc($get_q);
+	$num=mysqli_num_rows($get_q);
+	return array($st_arr,$num);
+					}
+		
+}
+
 function decode_pub_type($type,$conn){
 	if(isset($type)){
 		

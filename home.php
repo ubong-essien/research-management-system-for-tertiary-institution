@@ -17,108 +17,109 @@
     <!-- Icons Grid -->
     <section class="features-icons bg-light text-center">
       <div class="container">
-        <div class="row" style="font-family:arial narrow">
-          <div class="card col-lg-3">
+      <p class="alert alert-info">Students Work</p>
+        <div class="row" style="font-family:arial narrow;">
+         
+          <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
                 <i class="icon-notebook m-auto text-primary"></i>
               </div>
-              
-              <h3>Under Graduate</h3>
+              <h3 style="font-family:arial narrow">Under Graduate</h3>
               <h2>1232</h2>
-              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+             
             </div>
           </div>
-          <div class="card col-lg-3">
+          <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
                 <i class="icon-graduation m-auto text-primary"></i>
               </div>
-              <h3>Masters </h3>
+              <h3  style="font-family:arial narrow">Masters </h3>
               <h2>1232</h2>
-              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+             
             </div>
           </div>
-          <div class="card col-lg-3">
+          <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
                 <i class="icon-check m-auto text-primary"></i>
               </div>
-              <h3>PhD thesis</h3>
+              <h3 style="font-family:arial narrow">PhD thesis</h3>
               <h2>1232</h2>
-              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+             
             </div>
-          </div>
-          <div class="card col-lg-3">
-            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
-              </div>
-              <h3>Monograph</h3>
-              <h2>1232</h2>
-              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
-            </div>
-          </div>
-          <div class="card col-lg-3">
-            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
-              </div>
-              <h3>Refeered Journal</h3>
-              <h2>1232</h2>
-              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
-            </div>
-          </div>
-          <div class="card col-lg-3">
-            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
-              </div>
-              <h3>TextBooks</h3>
-              <h2>1232</h2>
-              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
-            </div>
-          </div>
-          <div class="card col-lg-3">
-            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
-              </div>
-              <h3>Conference Proceedings</h3>
-              <h2>1232</h2>
-              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
-            </div>
-          </div>
-          <div class="card col-lg-3">
-            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
-              </div>
-              <h3>Book Chapter</h3>
-              <h2>1232</h2>
-              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
-            </div>
-          </div>
+          </div> 
         </div>
-      </div>
-    </section>
-
-    
-
-    <!-- Call to Action -->
-    <section class="call-to-action text-white text-center">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-9 mx-auto">
-            <h2 class="mb-4">Why Use XYZ Research Project Management System</h2>
-             <a href="" class="btn btn-primary">Learn more</a>
+        <p class="alert alert-info">Staff Work</p>
+        <div class="row" style="font-family:arial narrow;">
+        
+          <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3 style="font-family:arial narrow">Monograph</h3>
+              <h2>1232</h2>
+             
+            </div>
           </div>
          
+          <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3 style="font-family:arial narrow">Refeered Journal</h3>
+              <h2>1232</h2>
+             
+            </div>
+          </div>
+          <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3 style="font-family:arial narrow">TextBooks</h3>
+              <h2>1232</h2>
+             
+            </div>
+          </div>
+          <div class="card col-lg-3" style="font-family:arial narrow;background:#ccc;margin:38px">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3 style="font-family:arial narrow">Conference Proceedings</h3>
+              <h2>1232</h2>
+             
+            </div>
+          </div>
+          <div class="card col-lg-3" style="font-family:arial narrow;background:#ccc;margin:38px">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3 style="font-family:arial narrow">Book Chapter</h3>
+              <h2>1232</h2>
+             
+            </div>
+          </div>
+          <div class="card col-lg-3" style="font-family:arial narrow;background:#ccc;margin:38px">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-check m-auto text-primary"></i>
+              </div>
+              <h3 style="font-family:arial narrow">Total Publications</h3>
+              <h2>1232</h2>
+             
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    <!--modals for display of why choose AKSU-->
+
+  
     
 <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true" >
     <div class="modal-dialog modal-lg" style="background-color:#006600;" >
