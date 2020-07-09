@@ -2,7 +2,7 @@
 $d=getdatabyreg($_SESSION['login_user_verified'],$con);
 ?>
     <!-- Masthead -->
-    <header class="masthead text-white text-center" style=" background: url('<?php echo home_base_url();?>img/bgo.jpg') no-repeat center;">
+    <header class="masthead text-white text-center" style=" background: url('<?php echo home_base_url();?>img/res8.jpg') no-repeat center;background-size:cover">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">

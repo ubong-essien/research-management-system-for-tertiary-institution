@@ -1,5 +1,5 @@
 <?php
-//sleep(2);
+sleep(2);
 
 //error_reporting(0);
 include('../../includes/connect.php');
@@ -45,14 +45,14 @@ global $sup;
 					
 						
 								<?php
-								echo "<h6 style='color:blue;text-transform:uppercase;font-family:times new romans'><a href='#submission{$row['id']}' title='Click to view decription' data-toggle='modal' data-target='#submission{$row['id']}'>".$row['topic']."</a></h6>";
-								echo "<p style='text-align:justify;font-family:san-serif'>".word_teaser($row['abstract'],56)."...</p>";
-								echo "<a href='../../research_files/staff_research/{$row['file']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li> </a>  <a href='download.php?link={$row['file']}&source=1' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['id']}' data-toggle='modal' data-target='#profile{$row['id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a>"
+								echo "<h6 style='color:blue;text-transform:uppercase;font-family:arial narrow'><a href='#submission{$row['id']}' title='Click to view decription' data-toggle='modal' data-target='#submission{$row['id']}'>".$row['topic']."</a></h6>";
+								echo "<p style='text-align:justify;font-family:arial narrow'>".word_teaser($row['abstract'],56)."...</p>";
+								echo "<a href='".home_base_url()."research_files/staff_research/{$row['file']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li></a>  <a href='".home_base_url()."main/download.php?link={$row['file']}&source=3' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['user_id']}' data-toggle='modal' data-target='#profile{$row['user_id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a><span style='margin-left:78%;font-family:san-serif;font-size:12px;color:#003300;'>Downloads: {$row['download']}</span>"
 						
 								?>
 								<hr/>
 							</div>
-					<div id="submission<?php echo $row['id'];?>" class="modal fade" role="dialog">
+					<div id="submission<?php echo $row['user_id'];?>" class="modal fade" role="dialog">
 					  <div class="modal-dialog modal-lg">
 
 						<!-- Modal content-->
@@ -72,7 +72,7 @@ global $sup;
 					  </div>
 					</div>
 					<!------------------------------------------>
-					<div id="profile<?php echo $row['id'];?>" class="modal fade" role="dialog">
+					<div id="profile<?php echo $row['user_id'];?>" class="modal fade" role="dialog">
 					  <div class="modal-dialog modal-md">
 						<?php
 						$authorsres=get_all_pub_for_user($_SESSION['search_sup'],$con);
@@ -89,7 +89,7 @@ global $sup;
 							<h4 class="modal-title">Authors Profile</h4>
 						  </div>
 						  <div class="modal-body">
-							<img src="<?php echo home_base_url();?>img/ph.jpg" alt="" style="margin-left:100px"/>
+							<img src="<?php echo home_base_url();?>staffpassport/<?php echo $auth['Passport'];?>" alt="" style="margin-left:100px"/>
 							<table class="table table-bordered">
 							<tr><td>Name</td><td><?php echo $auth['StaffName'];?></td></tr>
 							<tr><td>Staff Number</td><td><?php echo $auth['StaffSchID'];?></td></tr>
@@ -110,15 +110,20 @@ global $sup;
 						<?php
 						
 						endwhile;
-						else:
-						echo "<h5>No records available to display.</h5><br/>";
-						endif;
 						?>
-
-					<ul class="pagination">
+						
+					
+						<ul class="pagination" >
 							<?php
 							echo staffpaginatesup($getcurrentpage,$totalpages,$_SESSION['search_sup']);
 							?>
-					</ul>
-					
+							</ul>
+						<?php
+						else:
+						echo "<br/><br/><h5>No records available to display.</h5>";
+
+						endif;
+						?>
+						
+						
 				</div>

@@ -26,9 +26,13 @@ include('function.php');
     <link rel="stylesheet" href="<?php echo home_base_url();?>assets/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="<?php echo home_base_url();?>assets/css/Material-Card.css" />
     <link rel="stylesheet" href="<?php echo home_base_url();?>assets/css/datatables.min.css" />
-    <link rel="stylesheet" href="<?php echo home_base_url();?>assets/css/added.css" />
+    <link rel="stylesheet" href="<?php echo home_base_url();?>/css/added.css" />
     <!-- Custom styles for this template -->
     <link href="<?php echo home_base_url();?>css/landing-page.min.css" rel="stylesheet">
+    <script src="<?php echo home_base_url();?>vendor/jquery/jquery.min.js"></script>
+   
+   <script src="<?php echo home_base_url();?>assets/js/app.js"></script>
+
     <style type="text/css">
 	@keyframes bounce {
 	0%, 20%, 60%, 100% {
@@ -53,7 +57,7 @@ include('function.php');
     </style>
   </head>
 
-  <body>
+  <body style="background: url('<?php echo home_base_url();?>img/bgh.jpg');no-repeat">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default  static-top" style="background-color:#003300;">
@@ -66,9 +70,13 @@ include('function.php');
 		<a  href="<?php echo home_base_url();?>login.php" class="btn btn-primary btn-sm"> <li class="fa fa-key"></li> login</a>
 		<a  data-toggle="modal"	data-target="#signup" href="#signup" title="Signup" class="btn btn-success btn-sm"> <li class="fa fa-upload"></li> Sign Up</a>
 		<a  href="<?php echo home_base_url();?>main/index.php" class="btn btn-success btn-sm"> <li class="fa fa-search"></li> Search</a>
-		
-		<a  href="<?php echo home_base_url();?>logout.php" class="btn btn-danger btn-sm"> <li class="fa fa-power-off"></li> logout</a>
-        
+    <?php
+    if(isset($_SESSION['login_user_verified'])){
+    echo "<a  href='<?php echo home_base_url();?>logout.php' class='btn btn-danger btn-sm'> <li class='fa fa-power-off'></li> logout</a>";
+
+    }
+    ?>
+		   
       </div>
 	  </div>
     </nav>

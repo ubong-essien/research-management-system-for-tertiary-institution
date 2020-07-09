@@ -22,9 +22,9 @@ function message_alert(color,message){
     $('#progbar').hide();
     return;
    } 
-
-$('#search').submit(function(e){
-  
+   $(document).ready(function(){
+$('#staffsearch').submit(function(e){
+ // alert("ahhk");
   $('#progbar').show();
   var srch = $('#srch').val();
   if(!(srch=="")){
@@ -36,20 +36,11 @@ e.preventDefault();
  //alert(regdata);
   $.ajax({ 
      type:'POST',
-     url:'../../handlers/staff_explore_handlers/keyword_handler.php',
+     url:'../../handlers/staff_explore_handlers/staffkeyword_handler.php',
      data:regdata,
      success:function(data){
        $('#progbar').hide();
-   /* 
-       $('#staffstage').pagination({
-        dataSource:data,
-        callback: function(data, pagination) {
-            // template method of yourself
-            var html = template(data);
-            $('#staffstage').html(data);
-            //dataContainer.html(data);
-        }
-    }) */
+  
        $('#staffstage').html(data);
        
                }
@@ -61,6 +52,7 @@ e.preventDefault();
        return false;
      }
  });
+})
  
 
 
@@ -73,7 +65,7 @@ $('#progbar').show();
 var dptid=id;
 $.ajax({ 
          type:'POST',
-         url:'../../handlers/staff_explore_handlers/getdpt.php',
+         url:'../../handlers/staff_explore_handlers/staffgetdept.php',
          data:{Dept:dptid},
          success:function(html){
        //alert(html);
@@ -95,7 +87,7 @@ function staffpaginatedpt(page){
   
   $.ajax({ 
        type:'POST',
-       url:'../../handlers/staff_explore_handlers/getdpt.php',
+       url:'../../handlers/staff_explore_handlers/staffgetdept.php',
        data:{currentpage:page},
        success:function(html){
          //alert(html);
@@ -166,13 +158,13 @@ var p=page;
 
 $.ajax({ 
      type:'POST',
-     url:'../../handlers/staff_explore_handlers/keyword_handler.php',
+     url:'../../handlers/staff_explore_handlers/staffkeyword_handler.php',
      data:{currentpage:page},
      success:function(html){
        //alert(html);
        // $('#stage').hide();
        $('#progbar').hide();
-      $('#stage').html(html);
+      $('#staffstage').html(html);
        
                }
      

@@ -30,7 +30,7 @@ include('function.php');
 
   </head>
 
-  <body>
+  <body style="background-image: url('<?php echo home_base_url();?>img/res2.jpg');background-size:cover">
 
     <!-- Navigation -->
     <nav class="navbar navbar-light  static-top" style="background-color:#003300;">

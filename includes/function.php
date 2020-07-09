@@ -300,31 +300,33 @@ if(isset($user)&& isset($pass))
 												
 												$pswd_chk=password_verify($user_pass,$login_pswd);//check encrypted pswd
 												
-					if($pswd_chk==TRUE){
-												switch ($prvlge) {
-											case 1:
-										
-												
-														$_SESSION['login_user_verified']=$usr_details['Username'];
+									if($pswd_chk==TRUE){
+													switch ($prvlge) {
+												case 1:
+											
+													
+															$_SESSION['login_user_verified']=$usr_details['Username'];
+															$_SESSION['login_user_prev']=$usr_details['Privilege'];
+																
+															echo("<script>location.href = 'main/index.php';</script>");
+															break;
 															
-														echo("<script>location.href = 'main/index.php';</script>");
-														break;
-														
-											case 2:
-										
-												
-														$_SESSION['login_user_verified']=$usr_details['Username'];
-															
-														echo("<script>location.href = 'users/index.php';</script>");
-														break;
-											case 3:
-										
-														$_SESSION['login_user_verified']=$usr_details['Username'];
-														echo("<script>location.href = 'staff/index.php';</script>");
-														break;	
-														default:
-														echo"Invalid Prviledge!";														
-												}
+												case 2:
+											
+													
+															$_SESSION['login_user_verified']=$usr_details['Username'];
+															$_SESSION['login_user_prev']=$usr_details['Privilege'];
+															echo("<script>location.href = 'users/index.php';</script>");
+															break;
+												case 3:
+											
+															$_SESSION['login_user_verified']=$usr_details['Username'];
+															$_SESSION['login_user_prev']=$usr_details['Privilege'];
+															echo("<script>location.href = 'staff/index.php';</script>");
+															break;	
+															default:
+															echo"Invalid Prviledge!";														
+													}
 														
 										}
 										else
@@ -1044,6 +1046,54 @@ return;
 	}
 	////////////////////////////////////////
 	function paginatedpt($currentpage,$totalpages,$srch_ky){
+		$srch_ky=$_SESSION['search_dpt'];
+	/******  build the pagination links ******/
+	// range of num links to show
+	$range = 2;
+	
+	// if not on page 1, don't show back links
+	if ($currentpage > 1) {
+	   // show << link to go back to page 1
+	echo " <li><a class='btn btn-primary btn-sm' onclick='paginatedpt(1);' href='javascript:void(0)'>First</a></li> ";
+	   // get previous page num
+	   $prevpage = $currentpage - 1;
+	   // show < link to go back to 1 page
+	   echo " <li><a class='btn btn-primary btn-sm' onclick='paginatedpt($prevpage);' href='javascript:void(0)'>Previous</a></li> ";
+	} // end if 
+	//echo "<br/>".$currentpage."==".$range."==".(($currentpage + $range) + 1)."==>".($currentpage - $range);
+	// loop to show links to range of pages around current page
+	 for ($x = 1; $x < (($currentpage + 1) + 1); $x++) {
+	   // if it's a valid page number...
+	   if (($x > 0) && ($x <= $totalpages)) {
+		  // if we're on current page...
+		  if ($x == $currentpage) {
+			  
+			 // 'highlight' it but don't make a link
+			// echo " [<b>$x</b>] ";
+		  // if not current page...
+		  } else {
+			 // echo $x;
+			 // make it a link
+			 echo " <li><a class='btn btn-primary btn-sm' onclick='paginatedpt($x);' href='javascript:void(0)'>$x</a></li> ";
+		  } // end else
+	   } // end if 
+	} // end for 
+					 
+	// if not on last page, show forward and last page links        
+	if ($currentpage != $totalpages) {
+	   // get next page
+	   $nextpage = $currentpage + 1;
+	   $prevpage = $currentpage - 1;
+		// echo forward link for next page 
+	   echo " <li><a class='btn btn-primary btn-sm' onclick='paginatedpt($nextpage);' href='javascript:void(0)'>Next </a></li> ";
+	   // echo forward link for lastpage
+	echo " <li><a class='btn btn-primary btn-sm' onclick='paginatedpt($prevpage);' href='javascript:void(0)'>Last </a></li> ";
+	} // end if
+	/****** end build pagination links ******/
+	return;
+		}
+		//////////////////////////////////////
+	function staffpaginatedpt($currentpage,$totalpages,$srch_ky){
 	$srch_ky=$_SESSION['search_dpt'];
 /******  build the pagination links ******/
 // range of num links to show

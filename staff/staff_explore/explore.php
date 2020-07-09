@@ -10,7 +10,7 @@ $d = getnewstaff($email,$con);
       <div class="container">
         <div class="row">
           <div class="col-xl-9 mx-auto">
-            <h1 class="mb-5" style="color:white;"><img src="<?php echo home_base_url();?>img/logoban.png" alt='logo' /> Research Project Management System</h1>
+            <h1 class="mb-5" style="color:white;font-family:arial black"><img src="<?php echo home_base_url();?>img/logoban.png" alt='logo' /> Research Project Management System</h1>
           </div>
          
         </div>
@@ -56,7 +56,7 @@ $d = getnewstaff($email,$con);
 						
 
 ?>  
-            <li class="list-group-item"><a onclick="staffsendsupervisor('<?php echo $supid;?>')" href="javascript:void(0)"><?php echo $Supervisor_name;?></a><span class="badge" style="color:red;padding-left:10px;"><?php echo countbysup($supid,$con);?></span></li>
+            <li class="list-group-item"><a onclick="staffsendsupervisor('<?php echo $supid;?>')" href="javascript:void(0)"><?php echo strtoupper($Supervisor_name);?></a><span class="badge" style="color:red;padding-left:10px;"><?php echo staffcountbysup($supid,$con);?></span></li>
 			<?php
 					}
 				}else{echo"error displaying pages";}
@@ -88,19 +88,19 @@ $d = getnewstaff($email,$con);
         </div>
        
 			
-        <div class="col-md-9 col-sm-9 col-xs-12" style="padding:10px;" > 
+        <div class=" col-md-9 col-sm-9 col-xs-12" style="padding:10px;" > 
 		<div class="inv-proGresBar" id="progbar" style="display:none;">
 		<div class="inv-proGRa" ></div>
 		</div>
 		<div class="row">
-		   <span style="margin-top:20px;margin-left:1%;font-family:san-serif" class="alert alert-success col-md-12 col-lg-12">Welcome! You are logged in as : <?php echo $d['StaffName'];?> with Staff Number <?php echo $d['StaffSchID']?></span>
+		   <span style="margin-top:20px;margin-left:1%;margin-left:1%;font-family:san-serif" class="alert alert-success col-md-12 col-lg-12">Welcome! You are logged in as : <?php echo $d['StaffName'];?> with Staff Number <?php echo $d['StaffSchID']?></span>
 		</div>
 		<div class="row" id="">
 				<div class="col-md-12 col-lg-12" style="padding-top:30px;">
 				
 				
 		<h6 style="color:red;">Search By keyword</h6>
-				  <form id="search">
+				  <form id="staffsearch">
 					  <div class="form-row">
 						<div class="col-12 col-md-9 mb-2 mb-md-0">
 						  <input type="text" name="s_criteria" id="srch" class="form-control form-control-md" placeholder="Type a search keyword" />

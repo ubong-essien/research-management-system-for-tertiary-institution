@@ -1,7 +1,7 @@
 <?php
 include('includes/login_header.php');
 ?>
-<div class="container" style="background-image:url('<?php echo home_base_url();?>img/bg.jpg');">
+<div class="container" style="background-image:url('<?php echo home_base_url();?>img/bg.jpg');margin-top:5%;opacity:0.95;border-radius:10px;">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-2 col-lg-6 col-lg-offset-2" style="margin-left:25%;margin-top:5%;">
 			<h4 class="" id="login" style="color:orange;text-align:centre">
@@ -10,7 +10,7 @@ include('includes/login_header.php');
 
 					 <div class="">
 						
-									<div id="login-box" style="margin-left:100px;">
+									<div id="login-box" style="margin-left:25%;">
 									<form id="loginform">
 										<label style="color:#003300;">Username</label>  
 										<input type="text" class="form-control" name="username" style="width:250px;margin-left" >
@@ -32,8 +32,10 @@ include('includes/login_header.php');
 	<br/>
 	<br/>
 	<br/>
+	
+	
 	<?php
-	include('includes/footer.php');
+	//include('includes/footer.php');
 ?>
 	<script type="text/javascript">
 	

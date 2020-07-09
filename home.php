@@ -5,10 +5,20 @@
       <div class="container">
         <div class="row">
           <div class="col-xl-9 mx-auto">
-            <h1 class="mb-5" style="color:white;"><img src="img/logoban.png" alt='logo' />Welcome to XYZ Research Project Management System</h1>
+            <h1 class="mb-5" style="color:white;font-family:arial black;"><img src="img/logoban.png" alt='logo' />Welcome to XYZ Research Project Management System</h1>
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-           
+          <?php
+            if(isset($_SESSION['login_user_verified']) && ($_SESSION['login_user_prev'] == 1)){
+                  echo" <a href='".home_base_url()."main/index.php' class='btn btn-primary btn-lg' >Explore</a>";
+            }else if(isset($_SESSION['login_user_verified']) && ($_SESSION['login_user_prev'] == 3)) {
+              echo" <a href='".home_base_url()."staff/staff_explore/index.php' class='btn btn-primary btn-lg' >Explore</a>";
+            }else if(isset($_SESSION['login_user_verified']) && ($_SESSION['login_user_prev'] == 2)){
+              echo" <a href='".home_base_url()."pg/pg_explore/index.php' class='btn btn-primary btn-lg' >Explore</a>";
+            }else{
+              echo" <a href='".home_base_url()."login.php' class='btn btn-primary btn-lg' >Explore</a>";
+            }
+           ?>
           </div>
         </div>
       </div>
@@ -22,8 +32,8 @@
          
           <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-notebook m-auto text-primary"></i>
+              <div class="features-icons-icon d-flex" style="padding:5px 0 0 20% ;">
+               <img src="img/under.png" alt="" width="120px" height="100px;">
               </div>
               <h3 style="font-family:arial narrow">Under Graduate</h3>
               <h2>1232</h2>
@@ -32,8 +42,8 @@
           </div>
           <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-graduation m-auto text-primary"></i>
+              <div class="features-icons-icon d-flex" style="padding:5px 0 0 0 ;">
+              <img src="img/msc3.png" alt="" width="120px" height="100px;">
               </div>
               <h3  style="font-family:arial narrow">Masters </h3>
               <h2>1232</h2>
@@ -42,8 +52,8 @@
           </div>
           <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
+              <div class="features-icons-icon d-flex" style="padding:5px 0 0 0 ;">
+              <img src="img/phd.png" alt="" width="120px" height="100px;" >
               </div>
               <h3 style="font-family:arial narrow">PhD thesis</h3>
               <h2>1232</h2>
@@ -56,8 +66,8 @@
         
           <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
+              <div class="features-icons-icon d-flex" style="padding:5px 0 0 0 ;">
+              <img src="img/mono1.png" alt="" width="120px" height="100px;">
               </div>
               <h3 style="font-family:arial narrow">Monograph</h3>
               <h2>1232</h2>
@@ -67,8 +77,8 @@
          
           <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
+              <div class="features-icons-icon d-flex" style="padding:5px 0 0 10% ;">
+              <img src="img/journal.png" alt="" width="120px" height="100px;">
               </div>
               <h3 style="font-family:arial narrow">Refeered Journal</h3>
               <h2>1232</h2>
@@ -77,38 +87,38 @@
           </div>
           <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
+              <div class="features-icons-icon d-flex" style="padding:5px 0 0 0 ;">
+              <img src="img/textbook.png" alt="" width="120px" height="100px;">
               </div>
               <h3 style="font-family:arial narrow">TextBooks</h3>
               <h2>1232</h2>
              
             </div>
           </div>
-          <div class="card col-lg-3" style="font-family:arial narrow;background:#ccc;margin:38px">
+          <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
+              <div class="features-icons-icon d-flex" style="padding:5px 0 0 35% ;">
+              <img src="img/proceed.png" alt="" width="100px" height="100px;">
               </div>
               <h3 style="font-family:arial narrow">Conference Proceedings</h3>
               <h2>1232</h2>
              
             </div>
           </div>
-          <div class="card col-lg-3" style="font-family:arial narrow;background:#ccc;margin:38px">
+          <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
+              <div class="features-icons-icon d-flex" style="padding:5px 0 0 0 ;">
+              <img src="img/bookchapter.png" alt="" width="120px" height="100px;">
               </div>
               <h3 style="font-family:arial narrow">Book Chapter</h3>
               <h2>1232</h2>
              
             </div>
           </div>
-          <div class="card col-lg-3" style="font-family:arial narrow;background:#ccc;margin:38px">
+          <div class="card col-lg-3 item" style="font-family:arial narrow;background:#ccc;margin:38px">
             <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-check m-auto text-primary"></i>
+              <div class="features-icons-icon d-flex" style="padding:5px 0 0 20% ;">
+              <img src="img/under.png" alt="" width="120px" height="100px;">
               </div>
               <h3 style="font-family:arial narrow">Total Publications</h3>
               <h2>1232</h2>

@@ -47,20 +47,17 @@ include('../../includes/function.php');
 								while($row=mysqli_fetch_assoc($r)):
 								?>
 								
-								<table id="report">
-									<tr><td><div class="col-md-12 col-lg-12" style='background-color:;'>
+								<div class="col-md-12 col-lg-12">
 					
 						
-								<?php
-								echo "<h6 style='color:;text-transform:uppercase;font-family:san-serif'><a href='#submission{$row['id']}' title='Click to view decription' data-toggle='modal' data-target='#submission{$row['id']}'>".$row['topic']."</a></h6>";
-								echo "<section style='text-align:justify;font-family:san-serif;padding:10px;'>".word_teaser($row['abstract'],56)."...</section>";
-								echo "<a title='View File' href='../research_files/staff_research/{$row['file']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li> </a>  <a href='download.php?link={$row['file']}&source=1' title='Download File' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['id']}' title='view author's profile' data-toggle='modal' data-target='#profile{$row['id']}' class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a><span style='margin-left:78%;font-family:san-serif;font-size:12px;color:#003300;'>Downloads: {$row['download']}</span>"
+							<?php
+								echo "<h6 style='color:blue;text-transform:uppercase;font-family:arial narrow'><a href='#submission{$row['id']}' title='Click to view decription' data-toggle='modal' data-target='#submission{$row['id']}'>".$row['topic']."</a></h6>";
+								echo "<p style='text-align:justify;font-family:arial narrow'>".word_teaser($row['abstract'],56)."...</p>";
+								echo "<a href='".home_base_url()."research_files/staff_research/{$row['file']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li></a>  <a href='".home_base_url()."main/download.php?link={$row['file']}&source=3' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['user_id']}' data-toggle='modal' data-target='#profile{$row['user_id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a><span style='margin-left:78%;font-family:san-serif;font-size:12px;color:#003300;'>Downloads: {$row['download']}</span>"
 						
-								?>
+							?>
 								<hr/>
-							</div></td>
-				</tr>
-							</table>
+							</div>
 					<div id="submission<?php echo $row['id'];?>" class="modal fade" role="dialog">
 					  <div class="modal-dialog modal-lg">
 
@@ -81,7 +78,7 @@ include('../../includes/function.php');
 					  </div>
 					</div>
 					<!-------------------modal fo authors profile--------------------------->
-					<div id="profile<?php echo $row['id'];?>" class="modal fade" role="dialog">
+					<div id="profile<?php echo $row['user_id'];?>" class="modal fade" role="dialog">
 					  <div class="modal-dialog modal-md">
 						<?php
 
@@ -95,13 +92,14 @@ include('../../includes/function.php');
 							<h4 class="modal-title">Authors Profile</h4>
 						  </div>
 						  <div class="modal-body">
-							<img src="<?php echo home_base_url();?>img/ph.jpg" class="rounded-circle" alt="" style="margin-left:100px"/>
+							<img src="<?php echo home_base_url();?>staffpassport/<?php echo $author['Passport'];?>" alt="" style="margin-left:100px"/>
 							<table class="table table-bordered">
-							<tr><td>Name</td><td><?php echo $author['SurName'].", ".$author['FirstName']." ".$author['OtherNames'];?></td></tr>
+							<tr><td>Name</td><td><?php echo $author['StaffName'];?></td></tr>
+							<tr><td>Staff Number</td><td><?php echo $author['StaffSchID'];?></td></tr>
 							<tr><td>Department</td><td><?php echo GetProgDetails($author['DeptIDs'],$con);?></td></tr>
 							<tr><td>Email</td><td><?php echo $author['Email'];?></td></tr>
 							<tr><td>Phone</td><td><?php echo $author['Phone'];?></td></tr>
-							<tr><td>Supervisor</td><td><?php echo getsupervisor($row['SupervisorId'],$con);?></td></tr>
+						
 							
 							</table>
 						  </div>
@@ -116,19 +114,19 @@ include('../../includes/function.php');
 						
 						endwhile;
 						?>
-						<ul class="pagination" style="margin-left:70%">
+						
+					
+						<ul class="pagination" >
 							<?php
 							echo paginatekeyword($getcurrentpage,$totalpages,$_SESSION['search_key']);
 							?>
 							</ul>
 						<?php
 						else:
-						echo "<br/><h5>No records available to display.</h5>";
+						echo "<br/><br/><h5>No records available to display.</h5>";
+
 						endif;
 						?>
 						
-							
-							
-						  
-					
+						
 				</div>

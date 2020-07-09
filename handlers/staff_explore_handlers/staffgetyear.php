@@ -1,4 +1,5 @@
 <?php
+sleep(2);
 include('../../includes/connect.php');
 include('../../includes/function.php');					
 $Yr="";				
@@ -42,9 +43,9 @@ $Yr="";
 					
 						
 							<?php
-								echo "<h6 style='color:blue;text-transform:uppercase;font-family:times new romans'><a href='#submission{$row['id']}' title='Click to view decription' data-toggle='modal' data-target='#submission{$row['id']}'>".$row['topic']."</a></h6>";
-								echo "<p style='text-align:justify;font-family:san-serif'>".word_teaser($row['abstract'],56)."...</p>";
-								echo "<a href='../../research_files/staff_research/{$row['file']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li> </a>  <a href='download.php?link={$row['file']}&source=1' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['id']}' data-toggle='modal' data-target='#profile{$row['id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a>"
+								echo "<h6 style='color:blue;text-transform:uppercase;font-family:arial narrow'><a href='#submission{$row['id']}' title='Click to view decription' data-toggle='modal' data-target='#submission{$row['id']}'>".$row['topic']."</a></h6>";
+								echo "<p style='text-align:justify;font-family:arial narrow'>".word_teaser($row['abstract'],56)."...</p>";
+								echo "<a href='".home_base_url()."research_files/staff_research/{$row['file']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li></a>  <a href='".home_base_url()."main/download.php?link={$row['file']}&source=3' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['user_id']}' data-toggle='modal' data-target='#profile{$row['user_id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a><span style='margin-left:78%;font-family:san-serif;font-size:12px;color:#003300;'>Downloads: {$row['download']}</span>"
 						
 							?>
 								<hr/>
@@ -108,14 +109,20 @@ $Yr="";
 						<?php
 						
 						endwhile;
+						?>
+						
+					
+						<ul class="pagination" >
+							<?php
+							echo paginateyear($getcurrentpage,$totalpages,$_SESSION['search_yr']);
+							?>
+							</ul>
+						<?php
 						else:
-						echo "<h5>No records available to display.</h5><br/>";
+						echo "<br/><br/><h5>No records available to display.</h5>";
+
 						endif;
 						?>
-					<ul class="pagination">
-							<?php
-							echo paginatedpt($getcurrentpage,$totalpages,$_SESSION['search_dpt']);
-							?>
-					</ul>
-					
+						
+						
 				</div>

@@ -44,8 +44,8 @@ include('../../includes/function.php');
 					
 						
 								<?php
-								echo "<h6 style='color:blue;text-transform:uppercase;font-family:times new romans'><a href='#submission{$row['id']}' data-toggle='modal' title='Click to view description' data-target='#submission{$row['id']}'>".$row['topic']."</a></h6>";
-								echo "<p style='text-align:justify;font-family:san-serif;padding:10px;'>".word_teaser($row['abstract'],40)."...</p>";
+								echo "<h6 style='color:blue;text-transform:uppercase;font-family:arial narrow'><a href='#submission{$row['id']}' data-toggle='modal' title='Click to view description' data-target='#submission{$row['id']}'>".$row['topic']."</a></h6>";
+								echo "<p style='text-align:justify;font-family:arial narrow;padding:10px;'>".word_teaser($row['abstract'],40)."...</p>";
 								echo "<a href='".home_base_url()."research_files/staff_research/{$row['file']}' target='_blank' class='btn btn-success btn-sm'><li class='fa fa-book'></li></a>  <a href='".home_base_url()."main/download.php?link={$row['file']}&source=3' target='_blank' class='btn btn-primary btn-sm'><li class='fa fa-download'></li> </a>  <a href='#profile{$row['user_id']}' data-toggle='modal' data-target='#profile{$row['user_id']}'  class='btn btn-primary btn-sm'><li class='fa fa-eye'></li></a><span style='margin-left:78%;font-family:san-serif;font-size:12px;color:#003300;'>Downloads: {$row['download']}</span>"
 						
 								?>
@@ -104,14 +104,20 @@ include('../../includes/function.php');
 						<?php
 						
 						endwhile;
+						?>
+						
+					
+						<ul class="pagination" >
+							<?php
+							echo staffpaginatedpt($getcurrentpage,$totalpages,$_SESSION['search_dpt']);
+							?>
+							</ul>
+						<?php
 						else:
-						echo "<h5>No records available to display.</h5><br/>";
+						echo "<br/><br/><h5>No records available to display.</h5>";
+
 						endif;
 						?>
-					<ul class="pagination">
-							<?php
-							echo paginatedpt($getcurrentpage,$totalpages,$_SESSION['search_dpt']);
-							?>
-					</ul>
-					
+						
+						
 				</div>
