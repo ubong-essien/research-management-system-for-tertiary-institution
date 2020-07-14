@@ -36,7 +36,7 @@
                <img src="img/under.png" alt="" width="120px" height="100px;">
               </div>
               <h3 style="font-family:arial narrow">Under Graduate</h3>
-              <h2>1232</h2>
+              <h2>0</h2>
              
             </div>
           </div>
@@ -46,7 +46,7 @@
               <img src="img/msc3.png" alt="" width="120px" height="100px;">
               </div>
               <h3  style="font-family:arial narrow">Masters </h3>
-              <h2>1232</h2>
+              <h2>0</h2>
              
             </div>
           </div>
@@ -56,7 +56,7 @@
               <img src="img/phd.png" alt="" width="120px" height="100px;" >
               </div>
               <h3 style="font-family:arial narrow">PhD thesis</h3>
-              <h2>1232</h2>
+              <h2>0</h2>
              
             </div>
           </div> 
@@ -69,8 +69,9 @@
               <div class="features-icons-icon d-flex" style="padding:5px 0 0 0 ;">
               <img src="img/mono1.png" alt="" width="120px" height="100px;">
               </div>
+             
               <h3 style="font-family:arial narrow">Monograph</h3>
-              <h2>1232</h2>
+              <h2> <?php $no_momo = get_subm_by_type(5,$con); echo $no_momo['1'] ?></h2>
              
             </div>
           </div>
@@ -80,8 +81,9 @@
               <div class="features-icons-icon d-flex" style="padding:5px 0 0 10% ;">
               <img src="img/journal.png" alt="" width="120px" height="100px;">
               </div>
+             
               <h3 style="font-family:arial narrow">Refeered Journal</h3>
-              <h2>1232</h2>
+              <h2> <?php $no_refj = get_subm_by_type(1,$con); echo $no_refj['1'] ?></h2>
              
             </div>
           </div>
@@ -90,8 +92,9 @@
               <div class="features-icons-icon d-flex" style="padding:5px 0 0 0 ;">
               <img src="img/textbook.png" alt="" width="120px" height="100px;">
               </div>
+             
               <h3 style="font-family:arial narrow">TextBooks</h3>
-              <h2>1232</h2>
+              <h2> <?php $notxt = get_subm_by_type(2,$con); echo $notxt['1'] ?></h2>
              
             </div>
           </div>
@@ -100,8 +103,9 @@
               <div class="features-icons-icon d-flex" style="padding:5px 0 0 35% ;">
               <img src="img/proceed.png" alt="" width="100px" height="100px;">
               </div>
+             
               <h3 style="font-family:arial narrow">Conference Proceedings</h3>
-              <h2>1232</h2>
+              <h2> <?php $nocon = get_subm_by_type(3,$con); echo $nocon['1'] ?></h2>
              
             </div>
           </div>
@@ -110,8 +114,9 @@
               <div class="features-icons-icon d-flex" style="padding:5px 0 0 0 ;">
               <img src="img/bookchapter.png" alt="" width="120px" height="100px;">
               </div>
+            
               <h3 style="font-family:arial narrow">Book Chapter</h3>
-              <h2>1232</h2>
+              <h2>  <?php $nobook = get_subm_by_type(4,$con); echo $nobook['1'] ?></h2>
              
             </div>
           </div>
@@ -120,8 +125,9 @@
               <div class="features-icons-icon d-flex" style="padding:5px 0 0 20% ;">
               <img src="img/under.png" alt="" width="120px" height="100px;">
               </div>
+              <?php $notot = ($nobook[1] + $nocon[1]  + $notxt[1]  + $no_refj[1]  + $no_momo[1] );?>
               <h3 style="font-family:arial narrow">Total Publications</h3>
-              <h2>1232</h2>
+              <h2><?= $notot;?></h2>
              
             </div>
           </div>

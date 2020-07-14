@@ -1398,6 +1398,17 @@ function get_staff_subm_by_type($type,$uid,$conn){
 					}
 		
 }
+function get_subm_by_type($type,$conn){
+	if(isset($type)){
+		
+	$get_q=getAllRecord($conn,"staff_submission","publication_type = '$type'","","");
+	
+	$st_arr=mysqli_fetch_assoc($get_q);
+	$num=mysqli_num_rows($get_q);
+	return array($st_arr,$num);
+					}
+		
+}
 function get_all_pub_for_user($uid,$conn){
 	if(isset($uid)){
 

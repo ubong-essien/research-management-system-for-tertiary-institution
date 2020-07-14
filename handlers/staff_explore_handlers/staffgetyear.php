@@ -70,7 +70,7 @@ $Yr="";
 							</div>
 					</div>
 					<!----------------------------->
-					<div id="profile<?php echo $row['id'];?>" class="modal fade" role="dialog">
+					<div id="profile<?php echo $row['user_id'];?>" class="modal fade" role="dialog">
 					  <div class="modal-dialog modal-md">
 						<?php
 						echo $_SESSION['search_yr'];
